@@ -1,18 +1,124 @@
-import os
-import sys
-import json
+import os, json, requests
+import sys, time
 
-import time
-
-import requests
 from flask import Flask, request, redirect, url_for, flash
 from flask import render_template
 
+from flask import jsonify
+
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import current_user, login_user, login_required, LoginManager,logout_user
+
+from werkzeug.security import generate_password_hash,check_password_hash
+
+from flask_heroku import Heroku
+
+from forms import Login
+
 app = Flask(__name__)
+app.config.from_object('config')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://tmtfkfkrsfslju:a309076a45cb78b177bb9368b275cfdedf16422d2d01fb8ffc1fee1e7bee604d@ec2-23-23-225-12.compute-1.amazonaws.com:5432/d1g76agkrjaf2o'
+heroku = Heroku(app)
+db = SQLAlchemy(app)
+
+login_manager= LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'login'
+login_manager.init_app(app)
+
+
+# Create our database model
+class User(db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(25), index=True, unique=True, nullable=False)
+    password = db.Column(db.String(40),nullable=False)
+    def __init__(self, username, password):
+        self.username = username
+        self.password = password
+    def __repr__(self):
+        return '<title {}'.format(self.name)
+
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+
+    def get_id(self):
+        """Return the email address to satisfy Flask-Login's requirements."""
+        return self.username
+
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
+
+    def is_anonymous(self):
+        """False, as anonymous users aren't supported."""
+        return False
+
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    @login_manager.user_loader
+    def load_user(username):
+        return User.query.filter_by(username=username).first()
+
 
 @app.route('/')
 def index():    
 	return render_template("index.html")
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    error = None
+    form = Login()
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        print form.username.data
+        if user is not None and user.verify_password(form.password.data):
+            user.authenticated = True
+            print "hello"
+            db.session.add(user)
+            db.session.commit()
+            login_user(user)
+            return redirect(url_for('index'))
+        error = 'Invalid username or password. Please try again!'
+    return render_template("login.html")
+
+@app.route("/register",methods=['GET','POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('chat'))
+    form = Register()
+    error = None
+    if form.validate_on_submit():
+        username = form.username.data
+        password = form.password.data
+        if not db.session.query(User).filter(User.username == username).count():
+            reg = User(username,password)
+            db.session.add(reg)
+            db.session.commit()
+            return redirect(url_for('login'))
+        error = 'User with the same email already exists!'
+    return render_template('register.html',title='Register',form=form,error=error)
+
+@app.route('/broadcast')
+def broadcast():    
+    return render_template("broadcast.html")
+
+@app.route('/manage')
+def manage():    
+    return render_template("manage.html")
 
 @app.route('/webhook', methods=['GET'])
 def verify():
@@ -116,7 +222,6 @@ def send_state(recipient_id):
 def log(message):  # simple wrapper for logging to stdout on heroku
     print str(message)
     sys.stdout.flush()
-
 
 if __name__ == '__main__':
     app.run(debug=True)

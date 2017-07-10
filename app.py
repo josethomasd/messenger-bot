@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 from flask_heroku import Heroku
 
-from forms import Login
+from forms import Login, Register
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -93,7 +93,7 @@ def login():
             login_user(user)
             return redirect(url_for('index'))
         error = 'Invalid username or password. Please try again!'
-    return render_template("login.html")
+    return render_template("login.html",form=form)
 
 @app.route("/register",methods=['GET','POST'])
 def register():

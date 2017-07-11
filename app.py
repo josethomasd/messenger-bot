@@ -155,10 +155,19 @@ def webhook():
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
+    base_url = "https://graph.facebook.com/v2.8/"
+    access_token = "EAAEClqmwpowBABlZAZAOBVcHiqoRoFAry269cwu4Mp5ym18ZAHycWAaGWkNjr5kQ824ijSzG48C62BqOFoSrXEj6UJJFeZCQNDl4hbTbgBBKftx2pXsZBfZCaYImAZAV0BNPunewgak7HqYYTwLpIHZBTuuNdLf3dOSZAvxzlZBEir2QuRvwwqi48L"
+       
+
     if data["object"] == "page":
         try:
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
+                
+                final_url = base_url+sender_id+"?"+"access_token="+access_token
+                resp = request.get(final_url)
+                print resp
+
                 recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                 message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
 
@@ -170,9 +179,10 @@ def webhook():
                 if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
                     sender_id = data["entry"][0]["changes"][0]["value"]["sender_id"]
                     comment_id = data["entry"][0]["changes"][0]["value"]["comment_id"]
+                    post_id = data["entry"][0]["changes"][0]["value"]["post_id"]
                     message_text = data["entry"][0]["changes"][0]["value"]["message"]
                     sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
-                    print sender_name
+                    print sender_name   
             except:
                 pass
     return "ok", 200
@@ -195,7 +205,7 @@ def send_message(recipient_id, message_text):
             "text": message_text
         }
     })
-    r = requests.post("https://graph.facebook.com/v2.6/me/messages", params=params, headers=headers, data=data)
+    r = requests.post("https://graph.facebook.com/v2.8/me/messages", params=params, headers=headers, data=data)
     if r.status_code != 200:
         log(r.status_code)
         log(r.text)

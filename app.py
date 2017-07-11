@@ -33,7 +33,7 @@ class User(db.Model):
     __tablename__ = "users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), index=True, unique=True, nullable=False)
-    password = db.Column(db.String(40),nullable=False)
+    password_hash = db.Column(db.String(40),nullable=False)
     def __init__(self, username, password):
         self.username = username
         self.password = password
@@ -120,6 +120,15 @@ def broadcast():
 def manage():    
     return render_template("manage.html")
 
+@app.route('/signout')
+def logout():
+    user1 = current_user
+    user1.authenticated = False
+    db.session.add(user1)
+    db.session.commit()
+    logout_user()
+    flash('You have been logged out.')
+    return redirect(url_for('index'))
 @app.route('/webhook', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back

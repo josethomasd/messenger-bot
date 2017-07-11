@@ -166,8 +166,15 @@ def webhook():
 
                 send_message(sender_id, "Check check")
         except:
-            pass
-                #send_state(sender_id)
+            try:
+                if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
+                    sender_id = data["entry"][0]["changes"][0]["value"]["sender_id"]
+                    comment_id = data["entry"][0]["changes"][0]["value"]["comment_id"]
+                    message_text = data["entry"][0]["changes"][0]["value"]["message"]
+                    sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
+                    print sender_name
+            except:
+                pass
     return "ok", 200
 
 def send_message(recipient_id, message_text):

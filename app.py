@@ -75,8 +75,8 @@ class User(db.Model):
 @app.route("/")
 def index():  
     if not current_user.is_authenticated:
-        return render_template("login.html")
-	return render_template("index.html")
+        return redirect(url_for('login'))
+    return render_template("index.html")
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -99,7 +99,7 @@ def login():
 @app.route("/register",methods=['GET','POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('chat'))
+        return redirect(url_for('/'))
     form = Register()
     error = None
     if form.validate_on_submit():
@@ -116,13 +116,13 @@ def register():
 @app.route('/broadcast')
 def broadcast():
     if not current_user.is_authenticated:
-        return render_template("login.html")    
+        return redirect(url_for('login'))
     return render_template("broadcast.html")
 
 @app.route('/manage')
 def manage():
     if not current_user.is_authenticated:
-        return render_template("login.html") 
+        return redirect(url_for('login'))
     return render_template("manage.html")
 
 @app.route('/signout')

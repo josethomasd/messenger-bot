@@ -27,7 +27,8 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
-
+global bot_status
+bot_status = "on"
 # Create our database model
 class User(db.Model):
     __tablename__ = "users"
@@ -76,7 +77,17 @@ class User(db.Model):
 def index():  
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    return render_template("index.html")
+    return render_template("index.html",bot_status=bot_status)
+
+@app.route("/on")
+def bot_on():  
+    bot_status = "on"
+    return render_template("index.html",bot_status=bot_status)
+
+@app.route("/off")
+def bot_off():  
+    bot_status = "off"
+    return render_template("index.html",bot_status=bot_status)
 
 @app.route("/login", methods=['GET','POST'])
 def login():
@@ -163,22 +174,27 @@ def webhook():
         try:
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
-                
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
                 print final_url
+                send_state(sender_id)
+                time.sleep(5)
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
-                print sender_name
-                
-                recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
 
-                message_text = '+'.join(message_text.split(" "))
+                message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                send_message(sender_id, message_data)
 
-                send_message(sender_id, "Check check")
+                send_state(sender_id)
+                time.sleep(5)
+                message_data = "Would you like the sites I use?"
+                send_message(sender_id, message_data)
+
+                #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
+
         except:
             try:
                 if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
@@ -187,7 +203,11 @@ def webhook():
                     post_id = data["entry"][0]["changes"][0]["value"]["post_id"]
                     message_text = data["entry"][0]["changes"][0]["value"]["message"]
                     sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
-                    print sender_name   
+                    sender_fname = sender_name.split()[0]
+
+                    time.sleep(10)
+                    message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
+                    send_message(sender_id, message_data)
             except:
                 pass
     return "ok", 200

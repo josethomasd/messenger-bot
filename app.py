@@ -72,13 +72,13 @@ class User(db.Model):
         return User.query.filter_by(username=username).first()
 
 
-@app.route('/')
+@app.route("/")
 def index():  
     if not current_user.is_authenticated:
         return render_template("login.html")
 	return render_template("index.html")
 
-@app.route('/login', methods=['GET','POST'])
+@app.route("/login", methods=['GET','POST'])
 def login():
     error = None
     form = Login()
@@ -134,7 +134,7 @@ def logout():
     logout_user()
     flash('You have been logged out.')
     return redirect(url_for('login'))
-    
+
 @app.route('/webhook', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back

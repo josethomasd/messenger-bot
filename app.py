@@ -169,13 +169,7 @@ def webhook():
                     message_text = '+'.join(message_text.split(" "))
 
                     send_message(sender_id, "Check check")
-                    send_state(sender_id)
-                    time.sleep(5)
-                    send_message(sender_id, "www.yahoo.com")
-                    send_state(sender_id)                    
-                    time.sleep(5)
-                    send_message(sender_id, "www.fb.com")
-                    
+                    #send_state(sender_id)
 
                 if messaging_event.get("delivery"):  # delivery confirmation
                     pass
@@ -211,6 +205,7 @@ def send_message(recipient_id, message_text):
         log(r.status_code)
         log(r.text)
     return "ok", 200
+
 def send_state(recipient_id):
 
     log("sending state to {recipient}: ".format(recipient=recipient_id))

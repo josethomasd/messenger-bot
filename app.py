@@ -166,8 +166,12 @@ def webhook():
                 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
                 resp = requests.get(final_url)
-                print resp.json()
-
+                user_data = resp.json()
+                sender_fname = data["first_name"]
+                sender_lname = data["last_name"]
+                sender_name = sender_fname+" "+sender_lname
+                print sender_name
+                
                 recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                 message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
 

@@ -168,8 +168,8 @@ def webhook():
                 print final_url
                 resp = requests.get(final_url)
                 user_data = resp.json()
-                sender_fname = data["first_name"]
-                sender_lname = data["last_name"]
+                sender_fname = user_data["first_name"]
+                sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                 print sender_name
                 

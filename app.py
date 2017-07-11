@@ -73,7 +73,9 @@ class User(db.Model):
 
 
 @app.route('/')
-def index():    
+def index():  
+    if not current_user.is_authenticated:
+        return render_template("login.html")
 	return render_template("index.html")
 
 @app.route('/login', methods=['GET','POST'])
@@ -87,7 +89,6 @@ def login():
         print form.username.data
         if user is not None and user.verify_password(form.password.data):
             user.authenticated = True
-            print "hello"
             db.session.add(user)
             db.session.commit()
             login_user(user)
@@ -113,11 +114,15 @@ def register():
     return render_template('register.html',title='Register',form=form,error=error)
 
 @app.route('/broadcast')
-def broadcast():    
+def broadcast():
+    if not current_user.is_authenticated:
+        return render_template("login.html")    
     return render_template("broadcast.html")
 
 @app.route('/manage')
-def manage():    
+def manage():
+    if not current_user.is_authenticated:
+        return render_template("login.html") 
     return render_template("manage.html")
 
 @app.route('/signout')
@@ -128,7 +133,8 @@ def logout():
     db.session.commit()
     logout_user()
     flash('You have been logged out.')
-    return redirect(url_for('index'))
+    return redirect(url_for('login'))
+    
 @app.route('/webhook', methods=['GET'])
 def verify():
     # when the endpoint is registered as a webhook, it must echo back

@@ -170,7 +170,7 @@ def broadcast():
 
     return render_template("broadcast.html", form=form, msg=msg)
 
-@app.route('/manage')
+@app.route('/manage', methods=['GET', 'POST'])
 def manage():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))

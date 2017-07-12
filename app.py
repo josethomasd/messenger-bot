@@ -228,6 +228,7 @@ def webhook():
                 message_data = "Would you like the sites I use?"
                 send_message(sender_id, message_data)
             else:
+                print User_id.query.filter_by(name=sender_name)
                 send_message(sender_id, "f yeah")
 
                 #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID

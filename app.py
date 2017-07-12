@@ -248,9 +248,7 @@ def send_comment_message(recipient_id, message_text):
         "Content-Type": "application/json"
     }
     data = json.dumps({
-        "message": {
-            "text": message_text
-        }
+        "message": message_text
     })
     r = requests.post("https://graph.facebook.com/v2.8/"+recipient_id+"/private_replies", params=params, headers=headers, data=data)
     if r.status_code != 200:

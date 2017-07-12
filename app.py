@@ -208,7 +208,7 @@ def webhook():
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
-                sender_fname = sender_fname.split()[0]
+                sender_fname_stripped = sender_fname.split()[0]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                 # print sender_name
@@ -222,7 +222,7 @@ def webhook():
                     send_state(sender_id)
                     time.sleep(5)
 
-                    message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                    message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
                     send_message(sender_id, message_data)
 
                     send_state(sender_id)
@@ -230,6 +230,9 @@ def webhook():
                     message_data = "Would you like the sites I use?"
                     send_message(sender_id, message_data)
                 else:
+                    u_check = User_id.query.filter_by(name = sender_name).first()
+                    User_id.message_id = sender_id
+                    db.session.commit()
                     send_message(sender_id, "f yeah")
                     #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text

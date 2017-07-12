@@ -211,7 +211,7 @@ def webhook():
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                 # print sender_name
-                u_count = User_id.query.filter_by(name = sender_name, message_id = sender_id)
+                u_count = User_id.query.filter_by(name = sender_name, message_id = sender_id).first()
                 log(u_count)
                 if u_count is None:
                     db_add = User_id(name=sender_name, comment_id="", message_id=sender_id)

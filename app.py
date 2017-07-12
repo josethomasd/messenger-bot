@@ -212,7 +212,7 @@ def webhook():
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                     
-                if not db.session.query(User_id).filter(User_id.message_id == sender_id || User_id.name == sender_name).count():
+                if not db.session.query(User_id).filter(User_id.message_id == sender_id or User_id.name == sender_name).count():
                     reg = User_id(sender_name, "", sender_id)
                     db.session.add(reg)
                     db.session.commit()

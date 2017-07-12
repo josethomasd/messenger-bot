@@ -79,7 +79,12 @@
                         <button type="submit" class="btn btn-primary" type="submit">Submit</button>
                     </div>
                   </form>
-           
+                {% if msg %}
+                <script type="text/javascript">
+                    alert("Message broadcasted!")     
+                </script>
+                {% endif %}
+                
             </div>
 
         </div>

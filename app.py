@@ -157,6 +157,7 @@ def register():
 
 @app.route('/broadcast', methods=['GET', 'POST'])
 def broadcast():
+    msg = None
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     form = Broadcast()
@@ -165,8 +166,9 @@ def broadcast():
         users = User_id.query.all()
         for user in users:
             send_message(user.message_id, message_text)
+        msg = "Message broadcasted"
 
-    return render_template("broadcast.html", form=form)
+    return render_template("broadcast.html", form=form, msg=msg)
 
 @app.route('/manage')
 def manage():

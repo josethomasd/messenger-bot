@@ -100,7 +100,7 @@ class Posts(db.Model):
         self.post_id = post_id
         
     def __repr__(self):
-        return '<name {}>'.format(self.post_id)
+        return '<name {}>'.format(self.name)
 
 @app.route("/")
 def index():  
@@ -206,20 +206,14 @@ def webhook():
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
-                print final_url
+
+                send_state(sender_id)
+                time.sleep(5)
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
-                
-                db_add = models.User_id(sender_name, "", sender_id)
-                db.session.add(db_add)
-                db.session.commit()
-                print("User added to db")
-            
-                send_state(sender_id)
-                time.sleep(5)
 
                 message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
                 send_message(sender_id, message_data)

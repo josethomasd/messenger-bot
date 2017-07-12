@@ -68,10 +68,12 @@
 
             <div class="col-md-3">
                 <h3>Login here</h3>
+
+                {% if error %}
+                <strong>Error:</strong> {{ error }}
+                {% endif %}
+                
             </div>
-            {% if error %}
-            <strong>Error:</strong> {{ error }}
-            {% endif %}
         </div>
         <form class="form-group" action="login" method="POST" name="Login">
             <div class="form-group">

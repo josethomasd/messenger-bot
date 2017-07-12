@@ -91,6 +91,17 @@ class User_id(db.Model):
     def __repr__(self):
         return '<name {}>'.format(self.name)
 
+class Posts(db.Model):
+    __tablename__ = 'posts'
+
+    post_id = db.Column(db.String(100), primary_key=True)
+
+    def __init__(self, post_id):
+        self.post_id = post_id
+        
+    def __repr__(self):
+        return '<name {}>'.format(self.name)
+
 @app.route("/")
 def index():  
     if not current_user.is_authenticated:
@@ -195,22 +206,28 @@ def webhook():
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
-                print final_url
-                send_state(sender_id)
-                time.sleep(5)
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
+                    
+                if not db.session.query(User_id).filter(User_id.message_id == sender_id || User_id.name == sender_name).count():
+                    reg = User_id(sender_name, "", sender_id)
+                    db.session.add(reg)
+                    db.session.commit()
+                    print("User added to db")
+                
+                    send_state(sender_id)
+                    time.sleep(5)
 
-                message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
-                send_message(sender_id, message_data)
+                    message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                    send_message(sender_id, message_data)
 
-                send_state(sender_id)
-                time.sleep(5)
-                message_data = "Would you like the sites I use?"
-                send_message(sender_id, message_data)
+                    send_state(sender_id)
+                    time.sleep(5)
+                    message_data = "Would you like the sites I use?"
+                    send_message(sender_id, message_data)
 
                 #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                 #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text

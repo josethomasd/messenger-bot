@@ -68,10 +68,11 @@
 
             <div class="col-md-3">
                 <h3>Register here</h3>
+                
+                {% if error %}
+                <strong>Error:</strong> {{ error }}</p>
+                {% endif %}
             </div>
-            {% if error %}
-            <p><strong>Error:</strong> {{ error }}</p>
-            {% endif %}
         </div>
         <form class="form-group" action="register" method="POST" name="Login">
             <div class="form-group">

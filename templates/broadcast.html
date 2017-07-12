@@ -71,9 +71,10 @@
 
             <div class="col-md-3">
                 <h3>Broadcast Message</h3>
-                  <form method="POST" action="broadcast">
+                  <form class="form-group" action="broadcast" method="POST">
                     <div class="form-group">
                         <label for="comment">Enter the message:</label>
+                        {{ form.hidden_tag() }}
                         {{ form.broadcast_text(size=150,class="form-control") }} <br>
                         <button type="submit" onclick=submit_success() class="btn btn-primary" type="submit">Submit</button>
                     </div>

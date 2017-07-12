@@ -6,7 +6,7 @@ from flask import render_template
 
 from flask import jsonify
 
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy, exists
 from flask_login import current_user, login_user, login_required, LoginManager,logout_user
 
 from werkzeug.security import generate_password_hash,check_password_hash
@@ -111,7 +111,7 @@ def index():
 @app.route("/on")
 def bot_on(): 
     global bot_status 
-    bot_status = "on"
+    bot_status = "on"   
     return render_template("index.html",bot_status=bot_status)
 
 @app.route("/off")
@@ -211,8 +211,8 @@ def webhook():
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                 print sender_name
-                print User_id.query.filter_by(name=sender_name)
-                if not User_id.query.filter_by(name="sender_name"):
+
+                if User_id.query.filter(name=sender_id).count():
                     db_add = User_id(name=sender_name, comment_id="", message_id=sender_id)
                     db.session.add(db_add)
                     db.session.commit()

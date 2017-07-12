@@ -29,6 +29,7 @@ login_manager.init_app(app)
 
 global bot_status
 bot_status = "on"
+
 # Create our database model
 class User(db.Model):
     __tablename__ = "users"
@@ -72,6 +73,20 @@ class User(db.Model):
     def load_user(username):
         return User.query.filter_by(username=username).first()
 
+class Result(db.Model):
+    __tablename__ = 'user_id'
+
+    name = db.Column(db.String(), primary_key=True)
+    comment_id = db.Column(db.String(), nullable=False, unique=True)
+    message_id = db.Column(db.String(), nullable=False, unique=True)
+   
+    def __init__(self, name, comment_id, message_id):
+        self.name = name
+        self.comment_id = comment_id
+        self.message_id = message
+        
+    def __repr__(self):
+        return '<name {}>'.format(self.name)
 
 @app.route("/")
 def index():  
@@ -80,12 +95,14 @@ def index():
     return render_template("index.html",bot_status=bot_status)
 
 @app.route("/on")
-def bot_on():  
+def bot_on(): 
+    global bot_status 
     bot_status = "on"
     return render_template("index.html",bot_status=bot_status)
 
 @app.route("/off")
 def bot_off():  
+    global bot_status
     bot_status = "off"
     return render_template("index.html",bot_status=bot_status)
 
@@ -105,7 +122,7 @@ def login():
             login_user(user)
             return redirect(url_for('index'))
         error = 'Invalid username or password. Please try again!'
-    return render_template("login.html",form=form)
+    return render_template("login.html",form=form,error=error)
 
 @app.route("/register",methods=['GET','POST'])
 def register():

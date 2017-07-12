@@ -211,11 +211,11 @@ def webhook():
                 sender_fname = user_data["first_name"]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
-                print sender_name
-                db_add = models.User_id(sender_name, "", sender_id)
-                db.session.add(db_add)
-                db.session.commit()
-                print("User added to db")
+                # print sender_name
+                # db_add = models.User_id(sender_name, "", sender_id)
+                # db.session.add(db_add)
+                # db.session.commit()
+                # print("User added to db")
             
                 send_state(sender_id)
                 time.sleep(5)

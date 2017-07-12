@@ -74,7 +74,6 @@
                   <form class="form-group" action="broadcast" method="POST">
                     <div class="form-group">
                         <label for="comment">Enter the message:</label>
-                        {{ form.hidden_tag() }}
                         {{ form.broadcast_text(size=150,class="form-control") }} <br>
                         <button type="submit" class="btn btn-primary" type="submit">Submit</button>
                     </div>

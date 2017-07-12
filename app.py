@@ -212,7 +212,7 @@ def webhook():
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                 # print sender_name
-                if not query(User_id).filter(User_id.name == sender_name).count():
+                if not User_id.query.filter_by(name=sender_name).count():
                     db_add = User_id(name=sender_name, comment_id="", message_id=sender_id)
                     db.session.add(db_add)
                     db.session.commit()
@@ -235,7 +235,7 @@ def webhook():
                 #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
     except Exception as e: 
         print(e)
-        
+
     try:
         if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
             sender_id = data["entry"][0]["changes"][0]["value"]["sender_id"]

@@ -229,7 +229,7 @@ def webhook():
                 message_data = "Would you like the sites I use?"
                 send_message(sender_id, message_data)
             else:
-                db.session.query(User_id).filter_by(name=sender_name).update({"message_id": u"sender_id"})
+                db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
 
                 db.session.commit()
                 send_message(sender_id, "f yeah")

@@ -28,17 +28,20 @@ login_manager.login_view = 'login'
 login_manager.init_app(app)
 
 global bot_status
-bot_status = "on"
+bot_status = "ourn"
 
 # Create our database model
 class User(db.Model):
-    __tablename__ = "users"
+    __tablename__ = "login_db"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(200),nullable=False)
-    def __init__(self, username, password):
+    bot_status = db.Column(db.String(10))
+    def __init__(self, username, password, bot_status):
         self.username = username
         self.password = password
+        self.bot_status = bot_status
+
     def __repr__(self):
         return '<title {}'.format(self.name)
 
@@ -76,9 +79,9 @@ class User(db.Model):
 class Result(db.Model):
     __tablename__ = 'user_id'
 
-    name = db.Column(db.String(), primary_key=True)
-    comment_id = db.Column(db.String(), nullable=False, unique=True)
-    message_id = db.Column(db.String(), nullable=False, unique=True)
+    name = db.Column(db.String(30), primary_key=True)
+    comment_id = db.Column(db.String(100), nullable=False, unique=True)
+    message_id = db.Column(db.String(100), nullable=False, unique=True)
    
     def __init__(self, name, comment_id, message_id):
         self.name = name
@@ -114,6 +117,7 @@ def login():
         return redirect(url_for('index'))
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
+        print user
         print form.username.data
         if user is not None and user.verify_password(form.password.data):
             user.authenticated = True
@@ -133,12 +137,13 @@ def register():
     if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
+        bot_status = "on"
         if not db.session.query(User).filter(User.username == username).count():
-            reg = User(username,password)
+            reg = User(username,password,bot_status)
             db.session.add(reg)
             db.session.commit()
             return redirect(url_for('login'))
-        error = 'User with the same email already exists!'
+        error = 'User with the same username already exists!'
     return render_template('register.html',title='Register',form=form,error=error)
 
 @app.route('/broadcast')

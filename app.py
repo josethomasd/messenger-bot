@@ -86,7 +86,7 @@ class User_id(db.Model):
     def __init__(self, name, comment_id, message_id):
         self.name = name
         self.comment_id = comment_id
-        self.message_id = message
+        self.message_id = message_id
         
     def __repr__(self):
         return '<name {}>'.format(self.name)

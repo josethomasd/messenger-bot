@@ -6,7 +6,7 @@ from flask import render_template
 
 from flask import jsonify
 
-from flask_sqlalchemy import SQLAlchemy, exists
+from flask_sqlalchemy import SQLAlchemy
 from flask_login import current_user, login_user, login_required, LoginManager,logout_user
 
 from werkzeug.security import generate_password_hash,check_password_hash

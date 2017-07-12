@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 from flask_heroku import Heroku
 
-from forms import Login, Register, Broadcast, Posts
+from forms import Login, Register, Broadcast, Posts_form
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -28,7 +28,7 @@ login_manager.login_view = 'login'
 login_manager.init_app(app)
 
 global bot_status
-bot_status = "ourn"
+bot_status = "on"
 
 # Create our database model
 class User(db.Model):
@@ -175,7 +175,7 @@ def manage():
     msg = None
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    form = Posts()
+    form = Posts_form()
     if form.validate_on_submit():
         post_id = form.post_id.data
         if not db.session.query(Posts).filter(Posts.post_id == post_id).count():

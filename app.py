@@ -207,7 +207,7 @@ def webhook():
 
                     time.sleep(10)
                     message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
-                    send_message(comment_id, message_data)
+                    send_comment_message(comment_id, message_data)
             except:
                 pass
     return "ok", 200

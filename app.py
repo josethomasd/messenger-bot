@@ -242,7 +242,7 @@ def webhook():
             sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
             sender_fname = sender_name.split()[0]
 
-            u_count = User_id.query.filter_by(name = sender_name, comment_id = sender_id).first()
+            u_count = User_id.query.filter_by(name = sender_name, comment_id = str(sender_id)).first()
             log(u_count)
             if u_count is None:
                 db_add = User_id(name=sender_name, comment_id=sender_id, message_id="")

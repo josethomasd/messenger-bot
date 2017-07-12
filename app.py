@@ -231,7 +231,7 @@ def webhook():
                     send_message(sender_id, message_data)
                 else:
                     u_check = User_id.query.filter_by(name = sender_name).first()
-                    User_id.message_id = sender_id
+                    u_check.message_id = sender_id
                     db.session.commit()
                     send_message(sender_id, "f yeah")
                     #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID

@@ -235,28 +235,28 @@ def webhook():
                     #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
     except:
         try:   
-                if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
-                    sender_id = data["entry"][0]["changes"][0]["value"]["sender_id"]
-                    comment_id = data["entry"][0]["changes"][0]["value"]["comment_id"]
-                    post_id = data["entry"][0]["changes"][0]["value"]["post_id"]
-                    message_text = data["entry"][0]["changes"][0]["value"]["message"]
-                    sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
-                    sender_fname = sender_name.split()[0]
+            if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
+                sender_id = data["entry"][0]["changes"][0]["value"]["sender_id"]
+                comment_id = data["entry"][0]["changes"][0]["value"]["comment_id"]
+                post_id = data["entry"][0]["changes"][0]["value"]["post_id"]
+                message_text = data["entry"][0]["changes"][0]["value"]["message"]
+                sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
+                sender_fname = sender_name.split()[0]
 
-                    u_count = User_id.query.filter_by(name = sender_name).first()
-                    log(u_count)
-                    if u_count is None:
-                        db_add = User_id(name=sender_name, comment_id=sender_id, message_id="")
-                        db.session.add(db_add)
-                        db.session.commit()
-                    
-                        time.sleep(5)
-                        message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
-                        send_comment_message(comment_id, message_data)
-                    else:
-                        pass
-            except:
-                pass
+                u_count = User_id.query.filter_by(name = sender_name).first()
+                log(u_count)
+                if u_count is None:
+                    db_add = User_id(name=sender_name, comment_id=sender_id, message_id="")
+                    db.session.add(db_add)
+                    db.session.commit()
+                
+                    time.sleep(5)
+                    message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
+                    send_comment_message(comment_id, message_data)
+                else:
+                    pass
+        except:
+            pass
 
     return "ok", 200
 

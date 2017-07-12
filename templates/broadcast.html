@@ -71,10 +71,10 @@
 
             <div class="col-md-3">
                 <h3>Broadcast Message</h3>
-                  <form>
+                  <form method="POST">
                     <div class="form-group">
                         <label for="comment">Enter the message:</label>
-                        {{ form.broadcast_text(size=150,class="form-control") }}
+                        {{ form.broadcast_text(size=150,class="form-control") }} <br>
                         <button type="submit" onclick=submit_success() class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </form>

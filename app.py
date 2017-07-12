@@ -76,7 +76,7 @@ class User(db.Model):
     def load_user(username):
         return User.query.filter_by(username=username).first()
 
-class Result(db.Model):
+class User_id(db.Model):
     __tablename__ = 'user_id'
 
     name = db.Column(db.String(30), primary_key=True)
@@ -117,8 +117,6 @@ def login():
         return redirect(url_for('index'))
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
-        print user
-        print form.username.data
         if user is not None and user.verify_password(form.password.data):
             user.authenticated = True
             db.session.add(user)

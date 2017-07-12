@@ -100,7 +100,7 @@ class Posts(db.Model):
         self.post_id = post_id
         
     def __repr__(self):
-        return '<name {}>'.format(self.name)
+        return '<name {}>'.format(self.post_id)
 
 @app.route("/")
 def index():  
@@ -198,22 +198,27 @@ def webhook():
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
     base_url = "https://graph.facebook.com/v2.8/"
-    access_token = "EAAEClqmwpowBABlZAZAOBVcHiqoRoFAry269cwu4Mp5ym18ZAHycWAaGWkNjr5kQ824ijSzG48C62BqOFoSrXEj6UJJFeZCQNDl4hbTbgBBKftx2pXsZBfZCaYImAZAV0BNPunewgak7HqYYTwLpIHZBTuuNdLf3dOSZAvxzlZBEir2QuRvwwqi48L"
-       
+    access_token = os.environ["PAGE_ACCESS_TOKEN"]
 
     if data["object"] == "page":
         try:
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
-
-                send_state(sender_id)
-                time.sleep(5)
+                print final_url
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
+                
+                db_add = models.User_id(sender_name, "", sender_id)
+                db.session.add(db_add)
+                db.session.commit()
+                print("User added to db")
+            
+                send_state(sender_id)
+                time.sleep(5)
 
                 message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
                 send_message(sender_id, message_data)

@@ -100,7 +100,7 @@ class Posts(db.Model):
         self.post_id = post_id
         
     def __repr__(self):
-        return '<name {}>'.format(self.name)
+        return '<name {}>'.format(self.post_id)
 
 @app.route("/")
 def index():  
@@ -212,23 +212,21 @@ def webhook():
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
                 
-                print User_id.query.filter(message_id=sender_id).count()
-                if not User_id.query.filter(message_id=sender_id).count():
-                    reg = User_id(sender_name, "", sender_id)
-                    db.session.add(reg)
-                    db.session.commit()
-                    print("User added to db")
-                
-                    send_state(sender_id)
-                    time.sleep(5)
+                db_add = models.User_id(sender_name, "", sender_id)
+                db.session.add(db_add)
+                db.session.commit()
+                print("User added to db")
+            
+                send_state(sender_id)
+                time.sleep(5)
 
-                    message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
-                    send_message(sender_id, message_data)
+                message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                send_message(sender_id, message_data)
 
-                    send_state(sender_id)
-                    time.sleep(5)
-                    message_data = "Would you like the sites I use?"
-                    send_message(sender_id, message_data)
+                send_state(sender_id)
+                time.sleep(5)
+                message_data = "Would you like the sites I use?"
+                send_message(sender_id, message_data)
 
                 #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                 #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text

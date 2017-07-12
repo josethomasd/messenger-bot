@@ -251,7 +251,7 @@ def webhook():
                     db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
 
                     db.session.commit()
-                    send_message(sender_id, "f yeah")
+                    #send_message(sender_id, "f yeah")
                     #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
     except:
@@ -264,18 +264,20 @@ def webhook():
                 sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
                 sender_fname = sender_name.split()[0]
 
-                u_count = User_id.query.filter_by(name = sender_name).first()
-                log(u_count)
-                if u_count is None:
-                    db_add = User_id(name=sender_name, comment_id=sender_id, message_id="")
-                    db.session.add(db_add)
-                    db.session.commit()
-                
-                    time.sleep(5)
-                    message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
-                    send_comment_message(comment_id, message_data)
-                else:
-                    pass
+                post_check = Posts.query.filter_by(post_id=post_id).first()
+                if post_check is not None: 
+                    u_count = User_id.query.filter_by(name = sender_name).first()
+                    log(u_count)
+                    if u_count is None:
+                        db_add = User_id(name=sender_name, comment_id=sender_id, message_id="")
+                        db.session.add(db_add)
+                        db.session.commit()
+                    
+                        time.sleep(5)
+                        message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
+                        send_comment_message(comment_id, message_data)
+                    else:
+                        pass
         except:
             pass
 

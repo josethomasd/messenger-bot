@@ -211,7 +211,7 @@ def webhook():
             sender_lname = user_data["last_name"]
             sender_name = sender_fname+" "+sender_lname
             # print sender_name
-            db_add = db.session.User_id(name=sender_name, comment_id="", message_id=sender_id)
+            db_add = User_id(name=sender_name, comment_id="", message_id=sender_id)
             db.session.add(db_add)
             db.session.commit()
             print("User added to db")

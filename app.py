@@ -155,7 +155,7 @@ def register():
         error = 'User with the same username already exists!'
     return render_template('register.html',title='Register',form=form,error=error)
 
-@app.route('/broadcast')
+@app.route('/broadcast', methods=['GET', 'POST'])
 def broadcast():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
@@ -165,6 +165,7 @@ def broadcast():
         users = User_id.query.all()
         for user in users:
             send_message(user.message_id, message_text)
+
     return render_template("broadcast.html", form=form)
 
 @app.route('/manage')

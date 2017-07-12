@@ -70,6 +70,9 @@
                 <h3>Login here</h3>
 
                 {% if error %}
+                <script type="text/javascript">
+                    alert("Invalid username or password. Please try again!")     
+                </script>
                 <strong>Error:</strong> {{ error }}
                 {% endif %}
                 

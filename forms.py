@@ -9,3 +9,6 @@ class Register(Form):
     username = StringField('username',validators=[DataRequired()])
     password = PasswordField('passsword',validators=[DataRequired()])
 
+class Broadcast(Form):
+    broadcast_text = StringField('broadcast_text',validators=[DataRequired()])
+   

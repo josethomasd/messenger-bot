@@ -74,10 +74,16 @@
                   <form>
                     <div class="form-group">
                         <label for="comment">Enter the message:</label>
-                        <textarea class="form-control" rows="4" id="comment"></textarea><br>
-                        <button type="submit" class="btn btn-primary" type="submit">Submit</button>
+                        {{ form.broadcast_name(size=150,class="form-control") }}
+                        <button type="submit" onclick=submit_success() class="btn btn-primary" type="submit">Submit</button>
                     </div>
                 </form>
+                <script type="text/javascript">
+                    function submit_success()
+                    {
+                        alert("Message broadcasted")
+                    }
+                </script>
             </div>
 
         </div>

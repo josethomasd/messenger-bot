@@ -231,7 +231,7 @@ def webhook():
                 #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                 #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
     except:
-        return 200
+        return "ok", 200
 
     try:
         if data["entry"][0]["changes"][0]["value"]["item"]=="comment":

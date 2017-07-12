@@ -51,7 +51,7 @@
                         <a href="broadcast">Broadcast</a>
                     </li>
                     <li class="active">
-                        <a href="manage">Manage Subscribers</a>
+                        <a href="manage">Add Post</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -70,8 +70,22 @@
         <div class="row">
 
             <div class="col-md-3">
-                <h3>Manage Subscribers</h3>
-           
+                <h3>Add posts for allowing comment auto-reply</h3>
+
+                <form class="form-group" action="manage" method="POST">
+                    <div class="form-group">
+                        <label for="comment">Enter the post id:</label>
+                        {{ form.hidden_tag() }}
+                        {{ form.post_id(size=150,class="form-control") }} <br>
+                        <button type="submit" class="btn btn-primary" type="submit">Submit</button>
+                    </div>
+                  </form>
+                {% if msg %}
+                <script type="text/javascript">
+                    alert("Post added!")     
+                </script>
+                {% endif %}
+                
             </div>
 
         </div>

@@ -12,3 +12,5 @@ class Register(Form):
 class Broadcast(Form):
     broadcast_text = StringField('broadcast_text',validators=[DataRequired()])
    
+class Posts(Form):
+    post_id = StringField('post_id',validators=[DataRequired()])

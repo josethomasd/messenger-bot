@@ -13,7 +13,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 from flask_heroku import Heroku
 
-from forms import Login, Register, Broadcast
+from forms import Login, Register, Broadcast, Posts
 
 app = Flask(__name__)
 app.config.from_object('config')
@@ -174,7 +174,16 @@ def broadcast():
 def manage():
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    return render_template("manage.html")
+    form = Posts()
+    msg = None
+    if form.validate_on_submit():
+        post_id = form.post_id.data
+        if not db.session.query(Posts).filter(Posts.post_id == post_id).count():
+            add_post = Posts(post_id)
+            db.session.add(add_post)
+            db.session.commit()
+        msg = "Post added"
+    return render_template("manage.html", form=form, msg=msg)
 
 @app.route('/signout')
 def logout():

@@ -199,7 +199,7 @@ def webhook():
 
     base_url = "https://graph.facebook.com/v2.8/"
     access_token = os.environ["PAGE_ACCESS_TOKEN"]
-    try:
+    try:    
         if data["object"] == "page":
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
@@ -247,7 +247,8 @@ def webhook():
                 send_comment_message(comment_id, message_data)
         except:
             pass
-        return "ok", 200
+
+    return "ok", 200
 
 def send_message(recipient_id, message_text):
 

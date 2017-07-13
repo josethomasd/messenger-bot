@@ -1,6 +1,7 @@
 import os, json, requests
 import sys, time
 import urllib
+
 from flask import Flask, request, redirect, url_for, flash
 from flask import render_template
 
@@ -77,12 +78,13 @@ class User_id(db.Model):
     name = db.Column(db.String(30), primary_key=True)
     comment_id = db.Column(db.String(100), nullable=False)
     message_id = db.Column(db.String(100), nullable=False)
-   
-    def __init__(self, name, comment_id, message_id):
+    last_msg = db.Column(db.String(50), nullable=False)
+    def __init__(self, name, comment_id, message_id, last_msg):
         self.name = name
         self.comment_id = comment_id
         self.message_id = message_id
-        
+        self.last_msg = last_msg
+
     def __repr__(self):
         return '<name {}>'.format(self.name)
 
@@ -244,7 +246,7 @@ def webhook():
                 u_count = User_id.query.filter_by(name = sender_name).first()
                 log(u_count)
                 if u_count is None:
-                    db_add = User_id(name=sender_name, comment_id="", message_id=sender_id)
+                    db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
                     db.session.add(db_add)
                     db.session.commit()
                 
@@ -264,11 +266,16 @@ def webhook():
 
                     bot_status = Bot_status.query.first()
                     if(bot_status.status =="on"):
-                        time.sleep(5)
-                        send_state(sender_id)
-                        time.sleep(5)
-                        message_data = "Just a second, I'll be back in a little bit"
-                        send_message(sender_id, message_data)
+                        old_time = int(u_count.last_msg)
+                        new_time = int(time.time())
+                        if((new_time - old_time)>1800):
+                            db.session.query(User_id).update({"last_msg": new_time})
+                            db.session.commit()
+                            time.sleep(5)
+                            send_state(sender_id)
+                            time.sleep(5)
+                            message_data = "Just a second, I'll be back in a little bit"
+                            send_message(sender_id, message_data)
                     #send_message(sender_id, "f yeah")
                     #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                     #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
@@ -287,10 +294,10 @@ def webhook():
                     u_count = User_id.query.filter_by(name = sender_name).first()
                     log(u_count)
                     if u_count is None:
-                        db_add = User_id(name=sender_name, comment_id=sender_id, message_id="")
+                        db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg="0")
                         db.session.add(db_add)
                         db.session.commit()
-                    
+                        
                         time.sleep(5)
                         message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
                         send_comment_message(comment_id, message_data)

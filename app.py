@@ -27,20 +27,15 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
-global bot_status
-bot_status = "on"
-
 # Create our database model
 class User(db.Model):
     __tablename__ = "login_db"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(200),nullable=False)
-    bot_status = db.Column(db.String(10))
-    def __init__(self, username, password, bot_status):
+    def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.bot_status = bot_status
 
     def __repr__(self):
         return '<title {}'.format(self.name)
@@ -102,24 +97,37 @@ class Posts(db.Model):
     def __repr__(self):
         return '<name {}>'.format(self.post_id)
 
+class Bot_status(db.Model):
+    __tablename__ = 'bot_status'
+
+    status = db.Column(db.String(10), primary_key=True)
+
+    def __init__(self, post_id):
+        self.status = status
+        
+    def __repr__(self):
+        return '<name {}>'.format(self.status)
+
+
 @app.route("/")
 def index():  
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
+    bot_status = Bot_status.query.filter_by(status).first()
     return render_template("index.html",bot_status=bot_status)
 
-@app.route("/on")
+@app.route("/bot_on")
 def bot_on(): 
-    global bot_status 
-    bot_status = "on"   
-    return render_template("index.html",bot_status=bot_status)
+    db.session.query(Bot_status).filter_by(status).update({"status": u"on"})
+    db.session.commit()
+    return redirect(url_for('index'))
 
-@app.route("/off")
-def bot_off():  
-    global bot_status
-    bot_status = "off"
-    return render_template("index.html",bot_status=bot_status)
-
+@app.route("/bot_ff")
+def bot_off(): 
+    db.session.query(Bot_status).filter_by(status).update({"status": u"off"})
+    db.session.commit()
+    return redirect(url_for('index'))
+    
 @app.route("/login", methods=['GET','POST'])
 def login():
     error = None

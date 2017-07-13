@@ -110,11 +110,14 @@ class Bot_status(db.Model):
 
 
 @app.route("/")
-def index():  
+def index():
+    b_status = None  
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
     bot_status = Bot_status.query.first()
-    return render_template("index.html",bot_status=bot_status)
+    if(bot_status.status =="on"):
+        b_status = "on"
+    return render_template("index.html",bot_status=bot_status.status, b_status=b_status)
 
 @app.route("/bot_on")
 def bot_on(): 
@@ -257,7 +260,11 @@ def webhook():
                     send_message(sender_id, message_data)
                 else:
                     db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
-
+                    time.sleep(5)
+                    send_state(sender_id)
+                    time.sleep(5)
+                    message_data = "Just a second, I'll be back in a little bit"
+                    send_message(sender_id, message_data)
                     db.session.commit()
                     #send_message(sender_id, "f yeah")
                     #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID

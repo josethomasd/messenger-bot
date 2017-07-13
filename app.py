@@ -122,7 +122,7 @@ def bot_on():
     db.session.commit()
     return redirect(url_for('index'))
 
-@app.route("/bot_ff")
+@app.route("/bot_off")
 def bot_off(): 
     db.session.query(Bot_status).update({"status": u"off"})
     db.session.commit()

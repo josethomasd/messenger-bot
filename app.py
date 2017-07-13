@@ -251,13 +251,13 @@ def webhook():
                     db.session.commit()
                 
                     send_state(sender_id)
-                    time.sleep(5)
+                    time.sleep(25)
 
                     message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
                     send_message(sender_id, message_data)
 
                     send_state(sender_id)
-                    time.sleep(5)
+                    time.sleep(7)
                     message_data = "Would you like the sites I use?"
                     send_message(sender_id, message_data)
                 else:
@@ -298,7 +298,7 @@ def webhook():
                         db.session.add(db_add)
                         db.session.commit()
                         
-                        time.sleep(5)
+                        time.sleep(35)
                         message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
                         send_comment_message(comment_id, message_data)
                     else:

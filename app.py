@@ -249,9 +249,10 @@ def webhook():
                     db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
                     db.session.add(db_add)
                     db.session.commit()
-                
+										
+										time.sleep(10)
                     send_state(sender_id)
-                    time.sleep(25)
+                    time.sleep(10)
 
                     message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
                     send_message(sender_id, message_data)

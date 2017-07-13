@@ -113,18 +113,18 @@ class Bot_status(db.Model):
 def index():  
     if not current_user.is_authenticated:
         return redirect(url_for('login'))
-    bot_status = Bot_status.query.filter_by(status).first()
+    bot_status = Bot_status.query.first()
     return render_template("index.html",bot_status=bot_status)
 
 @app.route("/bot_on")
 def bot_on(): 
-    db.session.query(Bot_status).filter_by(status).update({"status": u"on"})
+    db.session.query(Bot_status).update({"status": u"on"})
     db.session.commit()
     return redirect(url_for('index'))
 
 @app.route("/bot_ff")
 def bot_off(): 
-    db.session.query(Bot_status).filter_by(status).update({"status": u"off"})
+    db.session.query(Bot_status).update({"status": u"off"})
     db.session.commit()
     return redirect(url_for('index'))
     

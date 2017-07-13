@@ -15,6 +15,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom CSS -->
+    <link href="static/css/shop-homepage.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,14 +45,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/">Configure Bot</a>
+                        <a href="/"><span class="glyphicon glyphicon-cog"></span> Configure Bot</a>
                     </li>
                     <li>
-                        <a href="broadcast">Broadcast</a>
+                        <a href="broadcast"><span class="glyphicon glyphicon-bullhorn"></span> Broadcast</a>
                     </li>
-                    <li>
-                        <a href="manage">Add Post</a>
-                    </li>
+                    <li><a href="manage"><span class="glyphicon glyphicon-plus-sign"></span> Add Post</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="signout"><span class="glyphicon glyphicon-user"></span> Sign Out</a></li>
@@ -69,7 +69,7 @@
 
             <div class="col-md-3">
                 <h3>Configure Bot</h3>
-                &nbsp; &nbsp; 
+                &nbsp;
                 Bot is currently turned <label> {{ bot_status }} </label>
                 <br><br>
                  <div class="list-group">

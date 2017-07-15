@@ -263,7 +263,6 @@ def webhook():
                 else:
                     db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
                     db.session.commit()
-
                     bot_status = Bot_status.query.first()
                     if(bot_status.status =="on"):
                         old_time = int(u_count.last_msg)

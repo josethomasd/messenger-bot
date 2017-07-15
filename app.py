@@ -385,18 +385,6 @@ def send_status(recipient_id):
     params = {
         "access_token": os.environ["PAGE_ACCESS_TOKEN"]
     }
-    headers = {
-        "Content-Type": "application/json"
-    }
-    data = json.dumps({
-        "recipient": {
-            "id": recipient_id
-        }
-    })
-    r = requests.post("https://graph.facebook.com/v2.8/me/messages", params=params, headers=headers, data=data)
-    if r.status_code != 200:
-        log(r.status_code)
-        log(r.text)
     return "ok", 200
 
 

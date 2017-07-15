@@ -242,12 +242,13 @@ def webhook():
                 sender_fname_stripped = sender_fname.split()[0]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
+                
                 # print sender_name
                 u_count = User_id.query.filter_by(name = sender_name).first()
                 log(u_count)
                 if u_count is None:
                     time.sleep(10)
-                    return "ok"
+                    
                     send_state(sender_id)
                     time.sleep(10)
 
@@ -255,15 +256,14 @@ def webhook():
                     send_message(sender_id, message_data)
 
                     send_state(sender_id)
-                    
-                    db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
-                    db.session.add(db_add)
-                    db.session.commit()
-                    
                     time.sleep(7)
+
                     message_data = "Would you like the sites I use?"
                     send_message(sender_id, message_data)
 
+                    db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
+                    db.session.add(db_add)
+                    db.session.commit()
                 else:
                     db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
                     db.session.commit()

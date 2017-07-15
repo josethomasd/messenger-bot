@@ -235,7 +235,7 @@ def webhook():
             if data["entry"][0]["messaging"]:
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
-                print final_url
+                #print final_url
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
@@ -291,7 +291,7 @@ def webhook():
                 post_check = Posts.query.filter_by(post_id=post_id).first()
                 if post_check is not None: 
                     u_count = User_id.query.filter_by(name = sender_name).first()
-                    log(u_count)
+                    #log(u_count)
                     if u_count is None:
                         db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg="0")
                         db.session.add(db_add)

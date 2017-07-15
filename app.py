@@ -247,8 +247,8 @@ def webhook():
                 u_count = User_id.query.filter_by(name = sender_name).first()
                 log(u_count)
                 if u_count is None:
-                    time.sleep(10)
-                    
+                    #time.sleep(10)
+                    send_message(sender_id, "Hi "+sender_name)
                     send_state(sender_id)
                     time.sleep(10)
 

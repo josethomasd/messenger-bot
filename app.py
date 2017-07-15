@@ -242,12 +242,12 @@ def webhook():
                 sender_fname_stripped = sender_fname.split()[0]
                 sender_lname = user_data["last_name"]
                 sender_name = sender_fname+" "+sender_lname
-                send_status(sender_id)
                 # print sender_name
                 u_count = User_id.query.filter_by(name = sender_name).first()
                 log(u_count)
                 if u_count is None:
                     time.sleep(10)
+                    return "ok"
                     send_state(sender_id)
                     time.sleep(10)
 

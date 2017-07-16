@@ -251,11 +251,11 @@ def webhook():
                     if u_count is None:
                         
                         #time.sleep(10)
-
-                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
+                        new_time = int(time.time())
+                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time)
                         db.session.add(db_add)
                         db.session.commit()
-                        
+
                         send_state(sender_id)
                         time.sleep(10)
 

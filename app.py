@@ -301,7 +301,7 @@ def webhook():
                         #log(u_count)
                         if u_count is None:
                             new_time = int(time.time())
-                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time)
+                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time+30)
                             db.session.add(db_add)
                             db.session.commit()
                             

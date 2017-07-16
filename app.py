@@ -250,7 +250,7 @@ def webhook():
                     log(u_count)
                     if u_count is None:
                         
-                        time.sleep(10)
+                        #time.sleep(10)
 
                         send_state(sender_id)
                         time.sleep(10)

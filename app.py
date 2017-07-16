@@ -229,6 +229,9 @@ def webhook():
 
     base_url = "https://graph.facebook.com/v2.8/"
     access_token = os.environ["PAGE_ACCESS_TOKEN"]
+    def generate(sender_id):
+        send_message(sender_id,"helloooo")   
+    sender_id = ""
     try:
         if data["object"] == "page":
             if data["entry"][0]["messaging"]:
@@ -237,7 +240,7 @@ def webhook():
                 print final_url
     except:
         pass
-    return "ok", 200
+    return "ok", 200, generate(sender_id)
 
 @app.route('/webhook/', methods=['GET', 'POST'])
 def webhookpost():

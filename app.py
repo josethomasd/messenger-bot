@@ -250,20 +250,20 @@ def webhook():
                     log(u_count)
                     if u_count is None:
                         
-                        time.sleep(10)
+                        time.sleep(35)
                         new_time = int(time.time())
                         db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time)
                         db.session.add(db_add)
                         db.session.commit()
 
                         send_state(sender_id)
-                        time.sleep(10)
+                        time.sleep(15)
 
                         message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
                         send_message(sender_id, message_data)
 
                         send_state(sender_id)
-                        time.sleep(7)
+                        time.sleep(5)
 
                         message_data = "Would you like the sites I use?"
                         send_message(sender_id, message_data)
@@ -301,11 +301,11 @@ def webhook():
                         #log(u_count)
                         if u_count is None:
                             new_time = int(time.time())
-                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time)
+                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time-10)
                             db.session.add(db_add)
                             db.session.commit()
                             
-                            time.sleep(35)
+                            time.sleep(30)
                             message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
                             send_comment_message(comment_id, message_data)
                         else:

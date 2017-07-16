@@ -4,7 +4,7 @@ import urllib
 
 from rq import Queue
 from redis import Redis
-from urlparse import urlparse
+import urlparse
 
 from flask import Flask, request, redirect, url_for, flash
 from flask import render_template
@@ -119,7 +119,7 @@ def function_to_queue(data):
     return "finished"
 # Tell RQ what Redis connection to use and parse url from the global variable that was added by the addon
 redis_url = os.getenv('REDISTOGO_URL')
-urlparse.append('redis')
+urlparse.uses_netloc.append('redis')
 url = urlparse.urlparse(redis_url)
 conn = Redis(host=url.hostname, port=url.port, db=0, password=url.password)
 q = Queue(connection=conn)  #no args implies the default queue

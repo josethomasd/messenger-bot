@@ -220,7 +220,7 @@ def verify():
     return "Hello world", 200
 
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/webhook/', methods=['POST'])
 def webhook():
 
     # endpoint for processing incoming messaging events

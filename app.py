@@ -79,7 +79,7 @@ class User_id(db.Model):
     comment_id = db.Column(db.String(100), nullable=False)
     message_id = db.Column(db.String(100), nullable=False)
     last_msg = db.Column(db.String(50), nullable=False)
-    auto_response = db.Column(db.Number(2), nullable=False)
+    auto_response = db.Column(db.Integer(3), nullable=False)
     def __init__(self, name, comment_id, message_id, last_msg, auto_response):
         self.name = name
         self.comment_id = comment_id

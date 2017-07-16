@@ -219,12 +219,6 @@ def verify():
 
     return "ok", 200
 
-
-@app.route('/webhook/', methods=['GET', 'POST'])
-def webhookpost():
-    return "ok", 200
-
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
 
@@ -315,6 +309,10 @@ def webhook():
         except:
             pass
 
+    return "ok", 200
+
+@app.route('/webhook/', methods=['GET', 'POST'])
+def webhookpost():
     return "ok", 200
 
 def send_message(recipient_id, message_text):

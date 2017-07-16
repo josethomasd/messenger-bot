@@ -4,7 +4,7 @@ import urllib
 
 from rq import Queue
 from redis import Redis
-import urllib.parse as urlparse
+from urlparse import urlparse
 
 from flask import Flask, request, redirect, url_for, flash
 from flask import render_template

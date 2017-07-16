@@ -235,6 +235,8 @@ def webhook():
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
                 print final_url
+    except:
+        pass
     return "ok", 200
 
 @app.route('/webhook/', methods=['GET', 'POST'])

@@ -70,7 +70,7 @@ class User(db.Model):
 
     @login_manager.user_loader
     def load_user(username):
-        return User.query.filter_by(username=username).first()
+        Return User.query.filter_by(username=username).first()
 
 class User_id(db.Model):
     __tablename__ = 'user_id'
@@ -301,6 +301,7 @@ def webhook():
                     sender_fname = sender_name.split()[0]
 
                     post_check = Posts.query.filter_by(post_id=post_id).first()
+                    time.sleep(30)
                     if post_check is not None: 
                         u_count = User_id.query.filter_by(name = sender_name).first()
                         #log(u_count)
@@ -310,7 +311,7 @@ def webhook():
                             db.session.add(db_add)
                             db.session.commit()
                             
-                            time.sleep(30)
+                            #time.sleep(30)
                             message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
                             send_comment_message(comment_id, message_data)
                         else:

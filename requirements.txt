@@ -9,8 +9,6 @@ responses==0.5.1
 SQLAlchemy==1.0.12
 sqlalchemy-migrate==0.10.0
 WTForms==2.1
-rq==0.8.0
-redis==2.10.5
 
 Jinja2==2.8
 MarkupSafe==0.23

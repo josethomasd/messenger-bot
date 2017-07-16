@@ -116,7 +116,6 @@ def function_to_queue(data):
         except:
             pass
 
-    return "ok", 200
     return "finished"
 # Tell RQ what Redis connection to use and parse url from the global variable that was added by the addon
 redis_url = os.getenv('REDISTOGO_URL')

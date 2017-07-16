@@ -235,7 +235,7 @@ def webhook():
                 sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                 final_url = base_url+sender_id+"?"+"access_token="+access_token
                 print final_url
-                send_status(sender_id)
+                return "ok", 200
                 resp = requests.get(final_url)
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]

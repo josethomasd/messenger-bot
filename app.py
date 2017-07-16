@@ -227,7 +227,7 @@ def webhook():
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
-    def generate(data):
+    def generate():
         base_url = "https://graph.facebook.com/v2.8/"
         access_token = os.environ["PAGE_ACCESS_TOKEN"]
         data = request.get_json()

@@ -252,6 +252,10 @@ def webhook():
                         
                         #time.sleep(10)
 
+                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
+                        db.session.add(db_add)
+                        db.session.commit()
+                        
                         send_state(sender_id)
                         time.sleep(10)
 
@@ -263,10 +267,6 @@ def webhook():
 
                         message_data = "Would you like the sites I use?"
                         send_message(sender_id, message_data)
-
-                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
-                        db.session.add(db_add)
-                        db.session.commit()
                     else:
                         db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
                         db.session.commit()

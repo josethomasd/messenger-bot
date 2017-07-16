@@ -119,7 +119,7 @@ def function_to_queue(data):
     return "finished"
 # Tell RQ what Redis connection to use and parse url from the global variable that was added by the addon
 redis_url = os.getenv('REDISTOGO_URL')
-urlparse.uses_netloc.append('redis')
+urlparse.append('redis')
 url = urlparse.urlparse(redis_url)
 conn = Redis(host=url.hostname, port=url.port, db=0, password=url.password)
 q = Queue(connection=conn)  #no args implies the default queue

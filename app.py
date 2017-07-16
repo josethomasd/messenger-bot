@@ -79,11 +79,13 @@ class User_id(db.Model):
     comment_id = db.Column(db.String(100), nullable=False)
     message_id = db.Column(db.String(100), nullable=False)
     last_msg = db.Column(db.String(50), nullable=False)
-    def __init__(self, name, comment_id, message_id, last_msg):
+    auto_response = db.Column(db.Number(2), nullable=False)
+    def __init__(self, name, comment_id, message_id, last_msg, auto_response):
         self.name = name
         self.comment_id = comment_id
         self.message_id = message_id
         self.last_msg = last_msg
+        self.auto_response = auto_response
 
     def __repr__(self):
         return '<name {}>'.format(self.name)
@@ -251,11 +253,11 @@ def webhook():
                     if u_count is None:
                         
                         new_time = int(time.time())
-                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time)
+                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time, auto_response=0)
                         db.session.add(db_add)
                         db.session.commit()
 
-                        time.sleep(30)
+                        time.sleep(15)
                         send_state(sender_id)
                         time.sleep(15)
 
@@ -275,13 +277,16 @@ def webhook():
                             old_time = int(u_count.last_msg)
                             new_time = int(time.time())
                             if((new_time - old_time)>50):
-                                db.session.query(User_id).update({"last_msg": new_time})
-                                db.session.commit()
-                                time.sleep(5)
-                                send_state(sender_id)
-                                time.sleep(5)
-                                message_data = "Just a second, I'll be back in a little bit"
-                                send_message(sender_id, message_data)
+                                if int(u_count.auto_response)==0:
+                                    db.session.query(User_id).update({"last_msg": new_time})
+                                    db.session.commit()
+                                    db.session.query(User_id).update({"auto_response": 1})
+                                    db.session.commit()
+                                    time.sleep(5)
+                                    send_state(sender_id)
+                                    time.sleep(5)
+                                    message_data = "Just a second, I'll be back in a little bit"
+                                    send_message(sender_id, message_data)
                         #send_message(sender_id, "f yeah")
                         #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
@@ -301,7 +306,7 @@ def webhook():
                         #log(u_count)
                         if u_count is None:
                             new_time = int(time.time())
-                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg="0")
+                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg="0", auto_response=0)
                             db.session.add(db_add)
                             db.session.commit()
                             

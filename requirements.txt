@@ -10,6 +10,7 @@ SQLAlchemy==1.0.12
 sqlalchemy-migrate==0.10.0
 WTForms==2.1
 eventlet
+rq==0.8.0
 
 Jinja2==2.8
 MarkupSafe==0.23

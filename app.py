@@ -250,12 +250,12 @@ def webhook():
                     log(u_count)
                     if u_count is None:
                         
-                        time.sleep(35)
                         new_time = int(time.time())
-                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time)
+                        db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time-30)
                         db.session.add(db_add)
                         db.session.commit()
 
+                        time.sleep(30)
                         send_state(sender_id)
                         time.sleep(15)
 
@@ -274,7 +274,7 @@ def webhook():
                         if(bot_status.status =="on"):
                             old_time = int(u_count.last_msg)
                             new_time = int(time.time())
-                            if((new_time - old_time)>1800):
+                            if((new_time - old_time)>30):
                                 db.session.query(User_id).update({"last_msg": new_time})
                                 db.session.commit()
                                 time.sleep(5)
@@ -301,7 +301,7 @@ def webhook():
                         #log(u_count)
                         if u_count is None:
                             new_time = int(time.time())
-                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time-10)
+                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time-30)
                             db.session.add(db_add)
                             db.session.commit()
                             

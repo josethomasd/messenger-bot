@@ -250,7 +250,7 @@ def webhook():
                     log(u_count)
                     if u_count is None:
                         
-                        #time.sleep(10)
+                        time.sleep(10)
                         new_time = int(time.time())
                         db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg=new_time)
                         db.session.add(db_add)
@@ -300,7 +300,8 @@ def webhook():
                         u_count = User_id.query.filter_by(name = sender_name).first()
                         #log(u_count)
                         if u_count is None:
-                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg="0")
+                            new_time = int(time.time())
+                            db_add = User_id(name=sender_name, comment_id=sender_id, message_id="", last_msg=new_time)
                             db.session.add(db_add)
                             db.session.commit()
                             

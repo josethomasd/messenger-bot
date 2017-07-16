@@ -70,7 +70,7 @@ class User(db.Model):
 
     @login_manager.user_loader
     def load_user(username):
-        Return User.query.filter_by(username=username).first()
+        return User.query.filter_by(username=username).first()
 
 class User_id(db.Model):
     __tablename__ = 'user_id'

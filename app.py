@@ -28,6 +28,7 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
+page_id = "1807136089567390_"
 # Create our database model
 class User(db.Model):
     __tablename__ = "login_db"
@@ -193,6 +194,7 @@ def manage():
     form = Posts_form()
     if form.validate_on_submit():
         post_id = form.post_id.data
+        post_id = page_id+post_id
         if not db.session.query(Posts).filter(Posts.post_id == post_id).count():
             add_post = Posts(post_id)
             db.session.add(add_post)

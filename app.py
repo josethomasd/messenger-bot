@@ -289,6 +289,9 @@ def webhook():
                                     time.sleep(5)
                                     message_data = "Just a second, I'll be back in a little bit"
                                     send_message(sender_id, message_data)
+                        else:
+                        	db.session.query(User_id).update({"auto_response": 1})
+                            db.session.commit()
                         #send_message(sender_id, "f yeah")
                         #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
                         #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text

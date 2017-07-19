@@ -252,8 +252,8 @@ def webhook():
                     db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
                     db.session.add(db_add)
                     db.session.commit()
-                    
-					time.sleep(10)
+
+                    time.sleep(10)
                     send_state(sender_id)
                     time.sleep(10)
 

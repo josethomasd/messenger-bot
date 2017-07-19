@@ -1,0 +1,13 @@
+DOWNLOAD FROM GITHUB
+Shift + right click in messenger-bot folder, "Open Command window here"
+git pull origin
+
+UPLOAD TO GITHUB
+Shift + right click in messenger-bot folder, "Open Command window here"
+git add .
+git commit -m "something"
+git push origin master
+
+UPDATE HEROKU
+https://dashboard.heroku.com/apps/gentle-wildwood-13203/deploy/github
+Deploy Branch

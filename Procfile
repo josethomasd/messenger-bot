@@ -1,2 +1,2 @@
-web: gunicorn --worker-class eventlet app:app --timeout 500 --log-file=-
+web: gunicorn app:app --timeout 500 --log-file -
 

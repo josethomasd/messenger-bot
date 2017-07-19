@@ -243,7 +243,7 @@ def webhook():
                 user_data = resp.json()
                 sender_fname = user_data["first_name"]
                 sender_fname_stripped = sender_fname.split()[0]
-                sender_lname = user_data["last_name"]
+                sender_lname = user_data["last_msgt_name"]
                 sender_name = sender_fname+" "+sender_lname
                 # print sender_name
                 u_count = User_id.query.filter_by(name = sender_name).first()
@@ -252,7 +252,7 @@ def webhook():
                     db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
                     db.session.add(db_add)
                     db.session.commit()
-										
+                    
 					time.sleep(10)
                     send_state(sender_id)
                     time.sleep(10)

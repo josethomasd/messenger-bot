@@ -231,74 +231,6 @@ def webhook():
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
-
-    base_url = "https://graph.facebook.com/v2.8/"
-    access_token = os.environ["PAGE_ACCESS_TOKEN"]
-    try:
-        if data["object"] == "page":
-            if data["entry"][0]["messaging"]:
-                sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
-                final_url = base_url+sender_id+"?"+"access_token="+access_token
-                print final_url
-                resp = requests.get(final_url)
-                user_data = resp.json()
-                sender_fname = user_data["first_name"]
-                sender_fname_stripped = sender_fname.split()[0]
-                sender_lname = user_data["last_name"]
-                sender_name = sender_fname+" "+sender_lname
-                # print sender_name
-                u_count = User_id.query.filter_by(name = sender_name).first()
-                log(u_count)
-                if u_count is None:
-                    db_add = User_id(name=sender_name, comment_id="", message_id=sender_id, last_msg="0")
-                    db.session.add(db_add)
-                    db.session.commit()
-										
-					time.sleep(10)
-                    send_state(sender_id)
-                    time.sleep(10)
-
-                    message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other."
-                    send_message(sender_id, message_data)
-
-                    send_state(sender_id)
-                    time.sleep(7)
-                    message_data = "Would you like to know both or only the free one?"
-                    send_message(sender_id, message_data)
-                else:
-                    db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
-                    db.session.commit()
-
-                    bot_status = Bot_status.query.first()
-                    if(bot_status.status =="on"):
-                        old_time = int(u_count.last_msg)
-                        new_time = int(time.time())
-                        if((new_time - old_time)>1800):
-                            db.session.query(User_id).update({"last_msg": new_time})
-                            db.session.commit()
-                            time.sleep(5)
-                            send_state(sender_id)
-                            time.sleep(5)
-                            message_data = "Just a second, I'll be back in a little bit"
-                            send_message(sender_id, message_data)
-                    #send_message(sender_id, "f yeah")
-                    #recipient_id = data["entry"][0]["messaging"][0]["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    #message_text = data["entry"][0]["messaging"][0]["message"]["text"]  # the message's text
-    except:
-        try:   
-            if data["entry"][0]["changes"][0]["value"]["item"]=="comment":
-                sender_id = data["entry"][0]["changes"][0]["value"]["sender_id"]
-                comment_id = data["entry"][0]["changes"][0]["value"]["comment_id"]
-                post_id = data["entry"][0]["changes"][0]["value"]["post_id"]
-                message_text = data["entry"][0]["changes"][0]["value"]["message"]
-                sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
-                sender_fname = sender_name.split()[0]
-
-                post_check = Posts.query.filter_by(post_id=post_id).first()
-                if post_check is not None: 
-=======
-=======
->>>>>>> 73575fb2db4c02c00134fa453b1d2333291666cc
     def generate():
         base_url = "https://graph.facebook.com/v2.8/"
         access_token = os.environ["PAGE_ACCESS_TOKEN"]
@@ -386,8 +318,6 @@ def webhook():
                             
                             #time.sleep(30)
                             message_data = "Hi "+sender_fname+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other.. Would you like to know both or only the free one?"
-                            send_comment_message(comment_id, message_data)
-                        else:
                             pass
             except:
                 pass

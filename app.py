@@ -231,6 +231,7 @@ def webhook():
     data = request.get_json()
     log(data)  # you may not want to log every incoming message in production, but it's good for testing
 
+<<<<<<< HEAD
 
     base_url = "https://graph.facebook.com/v2.8/"
     access_token = os.environ["PAGE_ACCESS_TOKEN"]
@@ -258,12 +259,12 @@ def webhook():
                     send_state(sender_id)
                     time.sleep(10)
 
-                    message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                    message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other."
                     send_message(sender_id, message_data)
 
                     send_state(sender_id)
                     time.sleep(7)
-                    message_data = "Would you like the sites I use?"
+                    message_data = "Would you like to know both or only the free one?"
                     send_message(sender_id, message_data)
                 else:
                     db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
@@ -297,6 +298,8 @@ def webhook():
                 post_check = Posts.query.filter_by(post_id=post_id).first()
                 if post_check is not None: 
 =======
+=======
+>>>>>>> 73575fb2db4c02c00134fa453b1d2333291666cc
     def generate():
         base_url = "https://graph.facebook.com/v2.8/"
         access_token = os.environ["PAGE_ACCESS_TOKEN"]
@@ -316,7 +319,6 @@ def webhook():
                     sender_name = sender_fname+" "+sender_lname
                     
                     # print sender_name
->>>>>>> 185862dfaf402c1fcbbfa83fdc2d50d90851aa29
                     u_count = User_id.query.filter_by(name = sender_name).first()
                     log(u_count)
                     if u_count is None:
@@ -330,13 +332,13 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other."
                         send_message(sender_id, message_data)
 
                         send_state(sender_id)
                         time.sleep(5)
 
-                        message_data = "Would you like the sites I use?"
+                        message_data = "Would you like to know both or only the free one?"
                         send_message(sender_id, message_data)
                     else:
                         db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
@@ -384,7 +386,7 @@ def webhook():
                             db.session.commit()
                             
                             #time.sleep(30)
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other.. Would you like to know both or only the free one?"
                             send_comment_message(comment_id, message_data)
                         else:
                             pass

@@ -287,7 +287,7 @@ def webhook():
                                     time.sleep(5)
                                     send_state(sender_id)
                                     time.sleep(5)
-                                    message_data = "Just a second, I'll be back in a little bit"
+                                    message_data = "Just a second, I'll be right back"
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})

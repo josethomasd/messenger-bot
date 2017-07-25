@@ -263,13 +263,13 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other."
                         send_message(sender_id, message_data)
 
                         send_state(sender_id)
                         time.sleep(5)
 
-                        message_data = "Would you like the sites I use?"
+                        message_data = "Would you like to know both or only the free one?"
                         send_message(sender_id, message_data)
                     else:
                         db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
@@ -317,9 +317,7 @@ def webhook():
                             db.session.commit()
                             
                             #time.sleep(30)
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is get paid for taking surveys online, I've been doing it since 2009 and it's taken me a long time to determine which are the good sites that pay, and which are scams. Would you like the sites I use?"
-                            send_comment_message(comment_id, message_data)
-                        else:
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other.. Would you like to know both or only the free one?"
                             pass
             except:
                 pass

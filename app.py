@@ -263,7 +263,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do a few things online that make me well over $100k/year.. most of them take money to make money... but I was broke when I started ($26 in my bank acct to be exact).\n\nI started by getting paid to take online surveys/focus groups because they're free, and I found a few sites that actually pay quite well, like http://realendeavors.com/myfavorites/fusioncash\n\nNow I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBefore I begin charging for it, I'm doing a free trial run with some people that are serious. Are you interested?"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBut before I begin charging for it, I'm doing a free "beta test" with some people that are serious. Are you interested?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -312,7 +312,7 @@ def webhook():
                             db.session.commit()
                             
                             #time.sleep(30)
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I do a few things online that make me well over $100k/year.. most of them take money to make money... but I was broke when I started ($26 in my bank acct to be exact).\n\nI started by getting paid to take online surveys/focus groups because they're free, and I found a few sites that actually pay quite well, like http://realendeavors.com/myfavorites/fusioncash\n\nNow I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBefore I begin charging for it, I'm doing a free trial run with some people that are serious. Are you interested?"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBut before I begin charging for it, I'm doing a free "beta test" with some people that are serious. Are you interested?"
                             pass
             except:
                 pass

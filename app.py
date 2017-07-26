@@ -263,7 +263,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBut before I begin charging for it, I'm doing a free "beta test" with some people that are serious. Are you interested?"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBut before I begin charging for it, I'm doing a free \"beta test\" with some people that are serious. Are you interested?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -312,7 +312,7 @@ def webhook():
                             db.session.commit()
                             
                             #time.sleep(30)
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBut before I begin charging for it, I'm doing a free "beta test" with some people that are serious. Are you interested?"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how to do it step by step.\n\nBut before I begin charging for it, I'm doing a free \"beta test\" with some people that are serious. Are you interested?"
                             pass
             except:
                 pass

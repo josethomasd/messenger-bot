@@ -264,6 +264,7 @@ def webhook():
                         time.sleep(15)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                         message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other."
                         send_message(sender_id, message_data)
 
@@ -274,6 +275,9 @@ def webhook():
                         send_message(sender_id, message_data)
 =======
                         message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do a few things online that make me over $100k/year.. most of them take money to make money (mostly advertising)... but I was broke when I started ($26 in my bank acct to be exact).\n\nWhat finally turned things around for me was actually 2 things: partnering up with my computer whiz nephew, and getting paid to take online surveys/focus groups.\n\nOf course, surveys won't make you a million dollars, but they're a good way to start because they're free and I found a few sites that actually pay quite well, for example: http://realendeavors.com/myfavorites/fusioncash\n\nThese days, I'm able to make more money doing things that require some investment, but surveys are what showed me that it's actually possible to make money online. And if you don't have money to invest right now, I'm happy to share the other legitimate survey sites I used to make real money.\n\n......Why am I doing this? Well I once heard Daymond John (from Shark Tank) say, \"Your network is what determines your net worth.\" So I'm always on the lookout for people like me who want to make money online. I selfishly want you to see that it's actually possible, so that in the future we might work together on other things.\n\nSo how would you like to start? Surveys/focus groups? Or are you interested in what I'm currently doing?"
+=======
+                        message_data = ";"
+>>>>>>> fd38fb04e348b48742b739049be3b1bb69c01ce5
                         send_message(sender_id, message_data)
 
 >>>>>>> 3377258f1c9a3ae25196999443447e8b28f8bdb1
@@ -324,10 +328,14 @@ def webhook():
                             
                             #time.sleep(30)
 <<<<<<< HEAD
+<<<<<<< HEAD
                             message_data = "Hi "+sender_fname+", thanks for reaching out.. I do 2 things online and make around $80k a year.. One is free and the other requires investment. I started with the first and used it to get myself out of debt, now I spend about half the day doing one and half doing the other.. Would you like to know both or only the free one?"
 =======
                             message_data = "Hi "+sender_fname+", thanks for reaching out.. I do a few things online that make me over $100k/year.. most of them take money to make money (mostly advertising)... but I was broke when I started ($26 in my bank acct to be exact).\n\nWhat finally turned things around for me was actually 2 things: partnering up with my computer whiz nephew, and getting paid to take online surveys/focus groups.\n\nOf course, surveys won't make you a million dollars, but they're a good way to start because they're free and I found a few sites that actually pay quite well, for example: http://realendeavors.com/myfavorites/fusioncash\n\nThese days, I'm able to make more money doing things that require some investment, but surveys are what showed me that it's actually possible to make money online. And if you don't have money to invest right now, I'm happy to share the other legitimate survey sites I used to make real money.\n\n.....Why am I doing this? Well I once heard Daymond John (from Shark Tank) say, \"Your network is what determines your net worth.\" So I'm always on the lookout for people like me who want to make money online. I selfishly want you to see that it's actually possible, so that in the future we might work together on other things.\n\nSo how would you like to start? Surveys/focus groups? Or are you interested in what I'm currently doing?"
 >>>>>>> 3377258f1c9a3ae25196999443447e8b28f8bdb1
+=======
+                            message_data = ";"
+>>>>>>> fd38fb04e348b48742b739049be3b1bb69c01ce5
                             pass
             except:
                 pass

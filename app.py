@@ -116,7 +116,7 @@ class Bot_status(db.Model):
 
 class Bot_Heroku(db.Model):
     __tablename__ = 'bot_heroku'
-
+    id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), nullable=False)
     message_id = db.Column(db.String(100), nullable=False)
     last_msg = db.Column(db.String(250), nullable=False)

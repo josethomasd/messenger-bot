@@ -337,7 +337,7 @@ def webhook():
                             #time.sleep(30)
 
                             message_data = ";"
-                            send_comment_message(sender_id,message_data)
+                            send_comment_message(comment_id, message_data)
             except:
                 pass
     return "ok", 200, generate()

@@ -114,6 +114,20 @@ class Bot_status(db.Model):
         return '<name {}>'.format(self.status)
 
 
+class Bot_Heroku(db.Model):
+    __tablename__ = 'bot_heroku'
+
+    name = db.Column(db.String(30), nullable=False)
+    message_id = db.Column(db.String(100), nullable=False)
+    last_msg = db.Column(db.String(250), nullable=False)
+    def __init__(self, name, message_id, last_msg):
+        self.name = name
+        self.message_id = message_id
+        self.last_msg = last_msg
+
+    def __repr__(self):
+        return '<name {}>'.format(self.name)
+
 @app.route("/")
 def index():
     b_status = None  
@@ -238,7 +252,10 @@ def webhook():
         try:
             if data["object"] == "page":
                 if data["entry"][0]["messaging"]:
-                    sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
+                    sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]
+                    # the facebook ID of the person sending you the message 
+                    sender_temp = data["entry"][0]["messaging"][0]["message"]["text"]
+
                     final_url = base_url+sender_id+"?"+"access_token="+access_token
                     print final_url
 
@@ -248,7 +265,10 @@ def webhook():
                     sender_fname_stripped = sender_fname.split()[0]
                     sender_lname = user_data["last_name"]
                     sender_name = sender_fname+" "+sender_lname
-                    
+                    sender_add = Bot_Heroku(name=sender_name, message_id=sender_id, last_msg = sender_temp)
+                    db.session.add(sender_add)
+                    db.session.commit()
+
                     # print sender_name
                     u_count = User_id.query.filter_by(name = sender_name).first()
                     log(u_count)

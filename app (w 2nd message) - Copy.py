@@ -113,6 +113,19 @@ class Bot_status(db.Model):
     def __repr__(self):
         return '<name {}>'.format(self.status)
 
+class Bot_Heroku(db.Model):
+    __tablename__ = 'bot_heroku'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30), nullable=False)
+    message_id = db.Column(db.String(100), nullable=False)
+    last_msg = db.Column(db.String(250), nullable=False)
+    def __init__(self, name, message_id, last_msg):
+        self.name = name
+        self.message_id = message_id
+        self.last_msg = last_msg
+
+    def __repr__(self):
+        return '<name {}>'.format(self.name)
 
 @app.route("/")
 def index():
@@ -240,6 +253,7 @@ def webhook():
                 if data["entry"][0]["messaging"]:
                     sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
                     final_url = base_url+sender_id+"?"+"access_token="+access_token
+                    sender_temp = data["entry"][0]["messaging"][0]["message"]["text"]
                     print final_url
 
                     resp = requests.get(final_url)
@@ -248,6 +262,10 @@ def webhook():
                     sender_fname_stripped = sender_fname.split()[0]
                     sender_lname = user_data["last_name"]
                     sender_name = sender_fname+" "+sender_lname
+                    sender_add = Bot_Heroku(name=sender_name, message_id=sender_id, last_msg = sender_temp)
+                    db.session.add(sender_add)
+                    db.session.commit()
+
                     
                     # print sender_name
                     u_count = User_id.query.filter_by(name = sender_name).first()
@@ -304,6 +322,9 @@ def webhook():
                     message_text = data["entry"][0]["changes"][0]["value"]["message"]
                     sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
                     sender_fname = sender_name.split()[0]
+                    sender_add = Bot_Heroku(name=sender_name+" Comment", message_id=sender_id, last_msg = message_text)
+                    db.session.add(sender_add)
+                    db.session.commit()
 
                     post_check = Posts.query.filter_by(post_id=post_id).first()
                     time.sleep(30)

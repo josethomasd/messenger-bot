@@ -263,7 +263,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "."
+                        message_data = ";"
                         send_message(sender_id, message_data)
 
                     else:
@@ -312,7 +312,7 @@ def webhook():
                             db.session.commit()
                             
                             #time.sleep(30)
-                            message_data = "."
+                            message_data = ";"
                             pass
             except:
                 pass

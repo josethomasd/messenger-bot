@@ -265,7 +265,6 @@ def webhook():
                     sender_fname_stripped = sender_fname.split()[0]
                     sender_lname = user_data["last_name"]
                     sender_name = sender_fname+" "+sender_lname
-                    print "yoyoyo"
                     sender_add = Bot_Heroku(name=sender_name, message_id=sender_id, last_msg = sender_temp)
                     db.session.add(sender_add)
                     db.session.commit()
@@ -320,7 +319,6 @@ def webhook():
                     message_text = data["entry"][0]["changes"][0]["value"]["message"]
                     sender_name = data["entry"][0]["changes"][0]["value"]["sender_name"]
                     sender_fname = sender_name.split()[0]
-                    print "yoyos"
                     sender_add = Bot_Heroku(name=sender_name+" Comment", message_id=sender_id, last_msg = message_text)
                     db.session.add(sender_add)
                     db.session.commit()
@@ -339,6 +337,7 @@ def webhook():
                             #time.sleep(30)
 
                             message_data = ";"
+                            send_comment_message(sender_id,message_data)
             except:
                 pass
     return "ok", 200, generate()

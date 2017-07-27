@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = ";" 
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how I've made serious cash with sites like Fusion Cash:\n\nhttp://realendeavors.com/myfavorites/fusioncash\n\nWould you like me to show you?" 
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(30)
 
-                            message_data = ";"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how I've made serious cash with sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nWould you like me to show you?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

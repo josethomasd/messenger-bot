@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is coach people who have never made a dollar online, and show them how I've made a full-time income using sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI'm on vacation and was literally just about to walk out the door, but figured I'd send this first. Take a look and let me know if you're able to get in, sometimes they're not accepting new members. Have you heard of this site?"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is coach people who have never made a dollar online, and show them how I've made a full-time income using sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI'm on vacation right now and was literally just about to walk out the door, but figured I'd send this first. Take a look and let me know if you're able to get in, sometimes they're not accepting new members. Have you heard of this site?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(30)
 
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is coach people who have never made a dollar online, and show them how I've made a full-time income using sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI'm on vacation and was literally just about to walk out the door, but figured I'd send this first. Take a look and let me know if you're able to get in, sometimes they're not accepting new members. Have you heard of this site?"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is coach people who have never made a dollar online, and show them how I've made a full-time income using sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI'm on vacation right now and was literally just about to walk out the door, but figured I'd send this first. Take a look and let me know if you're able to get in, sometimes they're not accepting new members. Have you heard of this site?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

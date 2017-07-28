@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how I've made a full-time income with sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nWould you like me to show you?" 
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. What I do is coach people who have never made a dollar online, and show them how I've made a full-time income using sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI'm on vacation and was literally just about to walk out the door, but figured I'd send this over first. Take a look and let me know if you're able to get in, sometimes they're not accepting new members.\n\nHave you heard of this site?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -282,8 +282,8 @@ def webhook():
                                     db.session.commit()
                                     time.sleep(5)
                                     send_state(sender_id)
-                                    time.sleep(5)
-                                    message_data = "Just a second, I'll be right back"
+                                    time.sleep(15)
+                                    message_data = "Ok I'm about to get on the road but I'll be back a litte later. In the meantime, if you're able to get into Fusion Cash they should send a confirmation email. Be sure to click the link in there so you can get paid, then let me know when you're in."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(30)
 
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I'm about to start coaching people who have never made a dollar online, and show them how I've made a full-time income with sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nWould you like me to show you?"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. What I do is coach people who have never made a dollar online, and show them how I've made a full-time income using sites like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI'm on vacation and was literally just about to walk out the door, but figured I'd send this over first. Take a look and let me know if you're able to get in, sometimes they're not accepting new members.\n\nHave you heard of this site?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

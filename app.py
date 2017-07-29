@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(5)
                                     send_state(sender_id)
                                     time.sleep(15)
-                                    message_data = "Ok so that one I just sent is my favorite and they pay actual cash, not just gift cards. They have an A+ rating with the Better Business Bureau, and they're not always accepting new members so let me know if you're able to get in. They should send you a confirmation email if you get in, be sure to click the link in there so you can get paid."
+                                    message_data = "Ok so that one I just sent is my favorite, they have an A+ rating with the Better Business Bureau and they're not always accepting new members, so let me know if you're able to get in. They should send you a confirmation email, be sure to click the link in there so you can get paid."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})

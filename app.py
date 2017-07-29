@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(5)
                                     send_state(sender_id)
                                     time.sleep(15)
-                                    message_data = "Ok so this one is my favorite, I've used it a lot to make money: http://realendeavors.com/myfavorites/fusioncash\n\nThey're not always accepting new members, so let me know if you're able to get in. I can show you how I've made it very profitable."
+                                    message_data = "Ok so Fusion Cash is my favorite, I've used it a lot to make money: http://realendeavors.com/FusionCash\n\nThey have an A+ rating with the Better Business Bureau, and they're not always accepting new members so let me know if you're able to get in. I can show you how I've made it very profitable."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})

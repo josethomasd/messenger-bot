@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. Ok so the trick to making a full-time income with surveys is to become a member of a handful of these sites so you have lots of options and can spend your time wisely by cherrypicking the highest-paying surveys...\n\nThe sites I use don't cost you a cent and will pay up to $75 per survey, but only once you've done some of the lesser-paying ones to show you're serious. Most people give up after seeing only the lesser-paying ones in the beginning, but they could have made a lot of money if they stuck with it...\n\nWould you like to know the site I've made the most money with?"
+                        message_data = "Hi "+sender_fname_stripped+", I've been making really good money with surveys. Would you like to know the site I've made the most money with?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(5)
                                     send_state(sender_id)
                                     time.sleep(15)
-                                    message_data = "Ok so Fusion Cash is my favorite, I've used it a lot to make money: http://realendeavors.com/FusionCash\n\nThey have an A+ rating with the Better Business Bureau, and they're not always accepting new members so let me know if you're able to get in. I can show you how I've made it very profitable."
+                                    message_data = "Ok so Fusion Cash is my favorite and they pay actual cash, not just gift cards: http://realendeavors.com/FusionCash\n\nThey have an A+ rating with the Better Business Bureau, and they're not always accepting new members so let me know if you're able to get in. I can show you how I've made it very profitable."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(30)
 
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. Ok so the trick to making a full-time income with surveys is to become a member of a handful of these sites so you have lots of options and can spend your time wisely by cherrypicking the highest-paying surveys...\n\nThe sites I use don't cost you a cent and will pay up to $75 per survey, but only once you've done some of the lesser-paying ones to show you're serious. Most people give up after seeing only the lesser-paying ones in the beginning, but they could have made a lot of money if they stuck with it...\n\nWould you like to know the site I've made the most money with?"
+                            message_data = "Hi "+sender_fname+", I've been making really good money with surveys. Would you like to know the site I've made the most money with?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

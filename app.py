@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. The trick to making a full-time income with surveys is to become a member of a handful of these sites so you have lots of options and can spend your time wisely by cherrypicking the highest-paying surveys.\n\nThe sites I use will even pay up to $75 per survey, but only once you've done some of the lesser-paying ones to show you're serious. Most people give up after seeing only the lesser-paying ones in the beginning, but they could have made a lot of money if they stuck with it.\n\nWould you like to know the site I've made the most money with?"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. Ok so the trick to making a full-time income with surveys is to become a member of a handful of these sites so you have lots of options and can spend your time wisely by cherrypicking the highest-paying surveys...\n\nThe sites I use don't cost you a cent and will pay up to $75 per survey, but only once you've done some of the lesser-paying ones to show you're serious. Most people give up after seeing only the lesser-paying ones in the beginning, but they could have made a lot of money if they stuck with it...\n\nWould you like to know the site I've made the most money with?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(30)
 
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. The trick to making a full-time income with surveys is to become a member of a handful of these sites so you have lots of options and can spend your time wisely by cherrypicking the highest-paying surveys.\n\nThe sites I use will even pay up to $75 per survey, but only once you've done some of the lesser-paying ones to show you're serious. Most people give up after seeing only the lesser-paying ones in the beginning, but they could have made a lot of money if they stuck with it.\n\nWould you like to know the site I've made the most money with?"
+                            message_data = "Hi "+sender_fname+", thanks for reaching out.. Ok so the trick to making a full-time income with surveys is to become a member of a handful of these sites so you have lots of options and can spend your time wisely by cherrypicking the highest-paying surveys...\n\nThe sites I use don't cost you a cent and will pay up to $75 per survey, but only once you've done some of the lesser-paying ones to show you're serious. Most people give up after seeing only the lesser-paying ones in the beginning, but they could have made a lot of money if they stuck with it...\n\nWould you like to know the site I've made the most money with?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

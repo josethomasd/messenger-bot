@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", I have a friend who works at a popular survey company, and she shared a method with me to make a full-time income with the survey sites that pay cash (not just gift cards) like this one: http://realendeavors.com/FusionCash Would you like me to share it with you? I'm not looking for any money"
+                        message_data = "Hi "+sender_fname_stripped+", I have a friend who works at a popular survey company, and she shared a method with me to make a full-time income with the survey sites that pay cash (not just gift cards) like Fusion Cash, http://realendeavors.com/FusionCash Would you like me to share it with you? I'm not looking for any money"
                         send_message(sender_id, message_data)
 
                     else:
@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(5)
                                     send_state(sender_id)
                                     time.sleep(15)
-                                    message_data = "Ok so that one I just sent is my favorite, they have an A+ rating with the Better Business Bureau and they're not always accepting new members, so let me know if you're able to get in. They should send you a confirmation email, be sure to click the link in there so you can get paid."
+                                    message_data = "Ok so Fusion Cash is my favorite, they have an A+ rating with the Better Business Bureau and they're not always accepting new members, so let me know if you're able to get in. They should send you a confirmation email, be sure to click the link in there so you can get paid."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(30)
 
-                            message_data = "Hi "+sender_fname+", I have a friend who works at a popular survey company, and she shared a method with me to make a full-time income with the survey sites that pay cash (not just gift cards) like this one: http://realendeavors.com/FusionCash Would you like me to share it with you? I'm not looking for any money"
+                            message_data = "Hi "+sender_fname+", I have a friend who works at a popular survey company, and she shared a method with me to make a full-time income with the survey sites that pay cash (not just gift cards) like Fusion Cash, http://realendeavors.com/FusionCash Would you like me to share it with you? I'm not looking for any money"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

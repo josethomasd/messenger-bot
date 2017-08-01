@@ -274,7 +274,7 @@ def webhook():
                         if(bot_status.status =="on"):
                             old_time = int(u_count.last_msg)
                             new_time = int(time.time())
-                            if((new_time - old_time)>35):
+                            if((new_time - old_time)>20):
                                 if int(u_count.auto_response)==0:
                                     db.session.query(User_id).update({"last_msg": new_time})
                                     db.session.commit()

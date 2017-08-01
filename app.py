@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(3)
                                     send_state(sender_id)
                                     time.sleep(8)
-                                    message_data = "Ok so the link I just sent in my first message, Fusion Cash is my favorite. They have an A+ rating with the Better Business Bureau and they're not always accepting new members, so let me know if you're able to get in. They should send you a confirmation email, be sure to click the link in there so you can get paid."
+                                    message_data = "Ok so Fusion Cash is my favorite.. they have an A+ rating with the Better Business Bureau and they're not always accepting new members, so go to the link I just sent in my previous message and let me know if you're able to get in. If you get in, they'll send you a confirmation email.. be sure to click the link in there so you can get paid."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I have a friend who works at a popular survey company, and she showed me how you can make a full-time income with survey sites that pay cash (not just gift cards) like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nTurns out you start getting the high-paying surveys once you've done some lesser paying ones consistently for a few days.. Would you like me to help you get started? I'm not looking for any money"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. I have a friend who works at a popular survey company, and she showed me how you can make a full-time income with survey sites that pay cash (not just gift cards) like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nTurns out you start getting the high-paying surveys once you've done some lesser paying ones consistently for a few days.. Would you like me to help you get started? I'm not looking for any money"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

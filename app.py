@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", I have a friend who works at a popular survey company, and she shared a method with me to make a full-time income with the survey sites that pay cash (not just gift cards) like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI thought you couldn't make this kind of money from surveys, but turns out you don't get the higher paying surveys until you've done the lesser paying ones consistently for a few days.. Would you like me to share everything she told me? I'm not looking for any money"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a popular survey company, and she showed me how you can make a full-time income with survey sites that pay cash (not just gift cards) like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nTurns out you start getting the high-paying surveys once you've done some lesser paying ones consistently for a few days.. Would you like me to help you get started? I'm not looking for any money"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", I have a friend who works at a popular survey company, and she shared a method with me to make a full-time income with the survey sites that pay cash (not just gift cards) like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nI thought you couldn't make this kind of money from surveys, but turns out you don't get the higher paying surveys until you've done the lesser paying ones consistently for a few days.. Would you like me to share everything she told me? I'm not looking for any money"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. I have a friend who works at a popular survey company, and she showed me how you can make a full-time income with survey sites that pay cash (not just gift cards) like Fusion Cash: http://realendeavors.com/myfavorites/fusioncash\n\nTurns out you start getting the high-paying surveys once you've done some lesser paying ones consistently for a few days.. Would you like me to help you get started? I'm not looking for any money"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

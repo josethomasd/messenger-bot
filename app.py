@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a popular survey company, and she showed me how you can make money with survey sites that pay via Paypal (not just gift cards) like MyPoints: http://realendeavors.com/myfavorites/mypoints  Would you like me to help you get started? I'm not looking for any money"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a popular survey company, and she showed me how you can make money with survey sites that pay via Paypal (not just gift cards) like MyPoints: http://realendeavors.com/myfavorites/mypoints\n\nWould you like me to help you get started? I'm not looking for any money"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for commenting.. I have a friend who works at a popular survey company, and she showed me how you can make money with survey sites that pay via Paypal (not just gift cards) like MyPoints: http://realendeavors.com/myfavorites/mypoints  Would you like me to help you get started? I'm not looking for any money"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. I have a friend who works at a popular survey company, and she showed me how you can make money with survey sites that pay via Paypal (not just gift cards) like MyPoints: http://realendeavors.com/myfavorites/mypoints\n\nWould you like me to help you get started? I'm not looking for any money"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

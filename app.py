@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a popular survey company, and she showed me how you can make money with survey sites that pay via Paypal (not just gift cards) like MyPoints: http://realendeavors.com/myfavorites/mypoints\n\nWould you like me to help you get started? I'm not looking for any money"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... I thought it was a bit Over-hyped, but i have been doing this for 2 months now and already made about $80,000... Needless to say, I've also quit my job at the call center :)\n\nhttp://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for commenting.. I have a friend who works at a popular survey company, and she showed me how you can make money with survey sites that pay via Paypal (not just gift cards) like MyPoints: http://realendeavors.com/myfavorites/mypoints\n\nWould you like me to help you get started? I'm not looking for any money"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... I thought it was a bit Over-hyped, but i have been doing this for 2 months now and already made about $80,000... Needless to say, I've also quit my job at the call center :)\n\nhttp://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

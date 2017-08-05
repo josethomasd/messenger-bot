@@ -237,7 +237,9 @@ def webhook():
         try:
             if data["object"] == "page":
                 if data["entry"][0]["messaging"]:
-                    sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]        # the facebook ID of the person sending you the message 
+                    sender_id = data["entry"][0]["messaging"][0]["sender"]["id"]
+                    # the facebook ID of the person sending you the message 
+
                     final_url = base_url+sender_id+"?"+"access_token="+access_token
                     print final_url
 
@@ -247,7 +249,7 @@ def webhook():
                     sender_fname_stripped = sender_fname.split()[0]
                     sender_lname = user_data["last_name"]
                     sender_name = sender_fname+" "+sender_lname
-                    
+
                     # print sender_name
                     u_count = User_id.query.filter_by(name = sender_name).first()
                     log(u_count)
@@ -258,18 +260,13 @@ def webhook():
                         db.session.add(db_add)
                         db.session.commit()
 
-                        time.sleep(15)
-                        send_state(sender_id)
-                        time.sleep(15)
-
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I do a few things online that make me over $100k/year.. most of them take money to make money (mostly advertising)... but I was broke when I started ($26 in my bank acct to be exact).\n\nWhat finally turned things around for me was actually 2 things: partnering up with my computer whiz nephew, and getting paid to take online surveys/focus groups.\n\nAnd yes, most surveys don't pay much (ask me how I know), but they're a good way to start because they're free and I found a few sites that actually pay quite well, for example http://realendeavors.com/myfavorites/fusioncash\n\nThese days, I'm able to make more money doing things that require some investment, but surveys are what showed me that it's actually possible to make money online. And if you don't have money to invest right now, I'm happy to share the other legitimate survey sites I used to make real money.\n\n......Why am I doing this? Well I once heard Daymond John (from Shark Tank) say, \"Your network is what determines your net worth.\" So I'm always on the lookout for people like me who want to make money online. I selfishly want you to see that it's actually possible, so that in the future we might work together on the other things I do."
-                        send_message(sender_id, message_data)
-
-                        send_state(sender_id)
                         time.sleep(5)
+                        send_state(sender_id)
+                        time.sleep(10)
 
-                        message_data = "So how would you like to start? Surveys/focus groups? Or are you interested in what I'm currently doing?"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... I thought it was a bit Over-hyped, but i have been doing this for 2 months now and already made about $80,000... Needless to say, I've also quit my job at the call center :)\n\nhttp://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
+
                     else:
                         db.session.query(User_id).filter_by(name=sender_name).update({"message_id": sender_id})
                         db.session.commit()
@@ -277,16 +274,16 @@ def webhook():
                         if(bot_status.status =="on"):
                             old_time = int(u_count.last_msg)
                             new_time = int(time.time())
-                            if((new_time - old_time)>35):
+                            if((new_time - old_time)>20):
                                 if int(u_count.auto_response)==0:
                                     db.session.query(User_id).update({"last_msg": new_time})
                                     db.session.commit()
                                     db.session.query(User_id).update({"auto_response": 1})
                                     db.session.commit()
-                                    time.sleep(5)
+                                    time.sleep(3)
                                     send_state(sender_id)
-                                    time.sleep(5)
-                                    message_data = "Just a second, I'll be right back"
+                                    time.sleep(8)
+                                    message_data = "Ok so you get paid for taking surveys, watching videos, playing games, shopping online, reading email, etc. MyPoints is my favorite.. They're not always accepting new members, so go to the link I just sent in my previous message and let me know if you're able to get in. If you get in, they'll send you a confirmation email.. be sure to click the link in there so you can get paid."
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -305,7 +302,7 @@ def webhook():
                     sender_fname = sender_name.split()[0]
 
                     post_check = Posts.query.filter_by(post_id=post_id).first()
-                    time.sleep(30)
+                    time.sleep(10)
                     if post_check is not None: 
                         u_count = User_id.query.filter_by(name = sender_name).first()
                         #log(u_count)
@@ -315,9 +312,10 @@ def webhook():
                             db.session.add(db_add)
                             db.session.commit()
                             
-                            #time.sleep(30)
-                            message_data = "Hi "+sender_fname+", thanks for reaching out.. I do a few things online that make me over $100k/year.. most of them take money to make money (mostly advertising)... but I was broke when I started ($26 in my bank acct to be exact).\n\nWhat finally turned things around for me was actually 2 things: partnering up with my computer whiz nephew, and getting paid to take online surveys/focus groups.\n\nAnd yes, most surveys don't pay much (ask me how I know), but they're a good way to start because they're free and I found a few sites that actually pay quite well, for example http://realendeavors.com/myfavorites/fusioncash\n\nThese days, I'm able to make more money doing things that require some investment, but surveys are what showed me that it's actually possible to make money online. And if you don't have money to invest right now, I'm happy to share the other legitimate survey sites I used to make real money.\n\n.....Why am I doing this? Well I once heard Daymond John (from Shark Tank) say, \"Your network is what determines your net worth.\" So I'm always on the lookout for people like me who want to make money online. I selfishly want you to see that it's actually possible, so that in the future we might work together on the other things I do.\n\nSo how would you like to start? Surveys/focus groups? Or are you interested in what I'm currently doing?"
-                            pass
+                            #time.sleep(10)
+
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... I thought it was a bit Over-hyped, but i have been doing this for 2 months now and already made about $80,000... Needless to say, I've also quit my job at the call center :)\n\nhttp://realendeavors.com/my-mentor"
+                            send_comment_message(comment_id, message_data)
             except:
                 pass
     return "ok", 200, generate()

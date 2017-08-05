@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(3)
                                     send_state(sender_id)
                                     time.sleep(8)
-                                    message_data = "Ok so you get paid for taking surveys, watching videos, playing games, shopping online, reading email, etc. MyPoints is my favorite.. They're not always accepting new members, so go to the link I just sent in my previous message and let me know if you're able to get in. If you get in, they'll send you a confirmation email.. be sure to click the link in there so you can get paid."
+                                    message_data = "I'm on vacation and was just about to walk out the door, but I'll be back soon"
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})

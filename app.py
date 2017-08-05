@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... I thought it was a bit Over-hyped, but i have been doing this for 2 months now and it has totally changed my life... I no longer work at the call center either :)\n\nHere's the video: http://realendeavors.com/my-mentor"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... Now I no longer work at the call center either :)\n\nHere it is: http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for commenting.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... I thought it was a bit Over-hyped, but i have been doing this for 2 months now and it has totally changed my life... I no longer work at the call center either :)\n\nHere's the video: http://realendeavors.com/my-mentor"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. So a couple of months ago I went to lunch with a girl I used to work with at a call center, and she pulled out her phone and showed me a video... Now I no longer work at the call center either :)\n\nHere it is: http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

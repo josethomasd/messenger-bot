@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation and I've still been making obscene amounts of money with a publicly funded company. I was skeptical at first and thought it was too good to be true, but they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation and still making obscene amounts of money with a publicly funded company. I was skeptical at first and thought it was too good to be true, but you get your own millionaire mentor who gets on the phone with you to walk you through everything step by step, and they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(3)
                                     send_state(sender_id)
                                     time.sleep(8)
-                                    message_data = "I'm on vacation and was just about to walk out the door, but I'll be back soon"
+                                    message_data = "Ok I'm just about to walk out the door, but I'll be back soon"
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for commenting.. I'm on vacation and I've still been making obscene amounts of money with a publicly funded company. I was skeptical at first and thought it was too good to be true, but they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. I'm on vacation and still making obscene amounts of money with a publicly funded company. I was skeptical at first and thought it was too good to be true, but you get your own millionaire mentor who gets on the phone with you to walk you through everything step by step, and they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

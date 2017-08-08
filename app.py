@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation and still making obscene amounts of money with a publicly funded company. I'm always skeptical of these kinds of things, but you get your own millionaire mentor who gets on the phone with you to walk you through everything step by step, and they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation and still making a full-time income with a publicly funded company. I'm always skeptical of these kinds of things, but you get your own millionaire mentor who gets on the phone with you to walk you through everything step by step, and they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", just saw your comment.. I'm on vacation and still making obscene amounts of money with a publicly funded company. I'm always skeptical of these kinds of things, but you get your own millionaire mentor who gets on the phone with you to walk you through everything step by step, and they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
+                            message_data = "Hi "+sender_fname+", just saw your comment.. I'm on vacation and still making a full-time income with a publicly funded company. I'm always skeptical of these kinds of things, but you get your own millionaire mentor who gets on the phone with you to walk you through everything step by step, and they'll actually pay you $500 if it doesn't work (because they know it does). Here's how I started: http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

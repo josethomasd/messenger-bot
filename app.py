@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hey "+sender_fname_stripped+", were you able to watch the video?"
+                        message_data = "Hey "+sender_fname_stripped+", always nice to hear from other members. I just started about a month ago, so this is all new for me and exciting. How long have you been doing it?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(3)
                                     send_state(sender_id)
                                     time.sleep(8)
-                                    message_data = "Ok I'm just about to walk out the door to get drinks, but I'll be back soon"
+                                    message_data = "Ok I was just about to walk out the door to get drinks, but I'll be back a little later. Will you be on?"
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", were you able to watch the video?"
+                            message_data = "Hey "+sender_fname+", always nice to hear from other members. I just started about a month ago, so this is all new for me and exciting. How long have you been doing it?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

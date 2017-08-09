@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation in Puerto Rico still making over $1k per day. This is what I do: http://realendeavos.com/my-mentor"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation in Puerto Rico still making over $1k per day. This is what I do: http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for commenting.. I'm on vacation in Puerto Rico still making over $1k per day. This is what I do: http://realendeavos.com/my-mentor"
+                            message_data = "Hi "+sender_fname+", thanks for commenting.. I'm on vacation in Puerto Rico still making over $1k per day. This is what I do: http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

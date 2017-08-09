@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hey "+sender_fname_stripped+", always nice to hear from others doing this. I just started about a month ago, and I'm already making $1k a day so this is all new and exciting for me! How long have you been doing it?"
+                        message_data = "Hey "+sender_fname_stripped+", always nice to hear from other team members. I just started about a month ago, and I'm already making $1k a day so this is all new and exciting for me! How long have you been doing it?"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", always nice to hear from others doing this. I just started about a month ago, and I'm already making $1k a day so this is all new and exciting for me! How long have you been doing it?"
+                            message_data = "Hey "+sender_fname+", always nice to hear from other team members. I just started about a month ago, and I'm already making $1k a day so this is all new and exciting for me! How long have you been doing it?"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

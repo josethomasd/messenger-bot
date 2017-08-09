@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = ""+sender_fname_stripped+", I was homeless living in my car less than a year ago. I spent over $10,000 trying to figure out how to make money online, and was in over $70,000 of debt. I had to eat food given to me by churches, and my husband even left me.\n\nFair warning: when you start doing this, people will only see your success and get jealous: http://realendeavors.com/my-mentor"
+                        message_data = ""+sender_fname_stripped+", I was homeless living in my car less than a year ago. I spent over $10,000 trying to figure out how to make money online, and was in over $70,000 of debt. I had to eat food given to me by churches, and my husband even left me.\n\nFair warning: when you finally start having success, people don't see what it took to get there and will get jealous. This is what turned everything around for me: http://realendeavors.com/my-mentor\n\n"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = ""+sender_fname+", I was homeless living in my car less than a year ago. I spent over $10,000 trying to figure out how to make money online, and was in over $70,000 of debt. I had to eat food given to me by churches, and my husband even left me.\n\nFair warning: when you start doing this, people will only see your success and get jealous: http://realendeavors.com/my-mentor"
+                            message_data = ""+sender_fname+", I was homeless living in my car less than a year ago. I spent over $10,000 trying to figure out how to make money online, and was in over $70,000 of debt. I had to eat food given to me by churches, and my husband even left me.\n\nFair warning: when you finally start having success, people don't see what it took to get there and will get jealous. This is what turned everything around for me: http://realendeavors.com/my-mentor\n\n"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

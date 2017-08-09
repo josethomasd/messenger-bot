@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I'm on vacation in Puerto Rico still making over $1k per day. This is what I do: http://realendeavors.com/my-mentor"
+                        message_data = ""+sender_fname_stripped+", I was homeless living in my car less than a year ago. I spent over $10,000 trying to figure out how to make money online, and was in over $70,000 of debt. My husband even left me.\n\nFair warning: when you start doing this, people will only see your success and get jealous: http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(3)
                                     send_state(sender_id)
                                     time.sleep(8)
-                                    message_data = "Ok I'm just about to walk out the door to get drinks with my husband, but I'll be back soon"
+                                    message_data = "Ok I'm just about to walk out the door to get drinks, but I'll be back soon"
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", thanks for commenting.. I'm on vacation in Puerto Rico still making over $1k per day. This is what I do: http://realendeavors.com/my-mentor"
+                            message_data = ""+sender_fname+", I was homeless living in my car less than a year ago. I spent over $10,000 trying to figure out how to make money online, and was in over $70,000 of debt. My husband even left me.\n\nFair warning: when you start doing this, people will only see your success and get jealous: http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

@@ -262,7 +262,7 @@ def webhook():
 
                         time.sleep(5)
                         send_state(sender_id)
-                        time.sleep(10)
+                        time.sleep(15)
 
                         message_data = "Hey "+sender_fname_stripped+", thanks for reaching out.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who showed me how to make money online, about $1000 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
@@ -274,7 +274,7 @@ def webhook():
                         if(bot_status.status =="on"):
                             old_time = int(u_count.last_msg)
                             new_time = int(time.time())
-                            if((new_time - old_time)>20):
+                            if((new_time - old_time)>25):
                                 if int(u_count.auto_response)==0:
                                     db.session.query(User_id).update({"last_msg": new_time})
                                     db.session.commit()
@@ -302,7 +302,7 @@ def webhook():
                     sender_fname = sender_name.split()[0]
 
                     post_check = Posts.query.filter_by(post_id=post_id).first()
-                    time.sleep(10)
+                    time.sleep(15)
                     if post_check is not None: 
                         u_count = User_id.query.filter_by(name = sender_name).first()
                         #log(u_count)

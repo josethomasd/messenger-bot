@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(10)
 
-                        message_data = "Hey "+sender_fname_stripped+", thanks for reaching out.. always nice to hear from other team members :) I just started about a month ago, and I'm already doing about $1000 a day. This is incredible for me, considering I was living in my car less than a year go. How long have you been doing it?"
+                        message_data = "Hey "+sender_fname_stripped+", thanks for reaching out.. Less than a year ago, I was living in my car.. but my life has completely changed since working with a millionaire mentor who showed me what to do and how to do it, and now I make about $1000 a day. I feel truly blessed since finding my mentor at http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", just saw your comment.. always nice to hear from other team members :) I just started about a month ago, and I'm already doing about $1000 a day. This is incredible for me, considering I was living in my car less than a year go. How long have you been doing it?"
+                            message_data = "Hey "+sender_fname+", just saw your comment.. Less than a year ago, I was living in my car.. but my life has completely changed since working with a millionaire mentor who showed me what to do and how to do it, and now I make about $1000 a day. I feel truly blessed since finding my mentor at http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

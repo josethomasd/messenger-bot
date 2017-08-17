@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hey "+sender_fname_stripped+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/my-mentor and wanted to share this with others who might be going through similiar situations I was"
+                        message_data = "Hey "+sender_fname_stripped+", I'm working with a mentor who gets on the phone with me and taught me how to make money online. I'm making just over $800 a day at the moment, and considering I was living in my car less than a year ago, I truly feel blessed. This is how I started: http://realendeavors.com/my-mentor"
                         send_message(sender_id, message_data)
 
                     else:
@@ -283,7 +283,7 @@ def webhook():
                                     time.sleep(3)
                                     send_state(sender_id)
                                     time.sleep(8)
-                                    message_data = "Ok I was just about to walk out the door, but I'll be back a little later. Will you be on?"
+                                    message_data = "I was just about to walk out the door, but I'll be back a little later. Will you be on?"
                                     send_message(sender_id, message_data)
                         else:
                         	db.session.query(User_id).update({"auto_response": 1})
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/my-mentor and wanted to share this with others who might be going through similiar situations I was"
+                            message_data = "Hey "+sender_fname+", I'm working with a mentor who gets on the phone with me and taught me how to make money online. I'm making just over $800 a day at the moment, and considering I was living in my car less than a year ago, I truly feel blessed. This is how I started: http://realendeavors.com/my-mentor"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

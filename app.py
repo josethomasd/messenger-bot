@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hey "+sender_fname_stripped+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/home and wanted to share this with others who might be going through similiar situations I was"
+                        message_data = "Hey "+sender_fname_stripped+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/my-mentor and wanted to share this with others who might be going through similiar situations I was"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/home and wanted to share this with others who might be going through similiar situations I was"
+                            message_data = "Hey "+sender_fname+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/my-mentor and wanted to share this with others who might be going through similiar situations I was"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

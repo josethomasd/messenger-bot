@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", I have a friend who works at an online software company and she showed me how to make $10k per month from home: http://realendeavors.com/my-mentor They mail me checks every week"
+                            message_data = "Hi "+sender_fname+", I have a friend who works at an online software company and she showed me how to make $10k per month from home: http://realendeavors.com/my-mentor They mail me checks every week"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

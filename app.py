@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hey "+sender_fname_stripped+", I was living in my car less than a year ago when a friend I used to work with at a call center sent me this link: http://realendeavors.com/work and it's changed everything for me. Now I have a mentor and I'm making around $700-1000 a day from home. I feel truly blessed and wanted to share with others."
+                        message_data = "Hey "+sender_fname_stripped+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/home and wanted to share this with others who might be going through similiar situations I was"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hey "+sender_fname+", I was living in my car less than a year ago when a friend I used to work with at a call center sent me this link: http://realendeavors.com/work and it's changed everything for me. Now I have a mentor and I'm making around $700-1000 a day from home. I feel truly blessed and wanted to share with others."
+                            message_data = "Hey "+sender_fname+", to be honest less than a year ago I was living in my car, but my life has changed since working with a mentor who showed me how to make money online, about $760 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/home and wanted to share this with others who might be going through similiar situations I was"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

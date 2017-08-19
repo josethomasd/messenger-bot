@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", let me tell you a quick story... Recently an old friend sent me this link: http://realendeavors.com/momsworkfromhome Honestly I didn't take it seriously because I found reviews saying it's a scam, but she stayed in touch and kept showing me her weekly payments. I asked her to be totally honest with me about it since I didn't have money to spare, and what I realized is there are lots of people out there that make fake reviews, so they can tell you something is a scam then try to get you to do something else that makes them money. You can always spot a fake review by whether they try to promote something else."
+                        message_data = "Hi "+sender_fname_stripped+", let me tell you a quick story... Recently an old friend sent me this link: http://realendeavors.com/momsworkfromhome Honestly I didn't take it seriously because I found reviews saying it's a scam, but she stayed in touch and kept showing me her weekly payments.\n\nI asked her to be totally honest with me about it since I didn't have money to spare, and what I realized is there are lots of people out there that make fake reviews, so they can tell you something is a scam then try to get you to do something else that makes them money. You can always spot a fake review by whether they try to promote something else."
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", let me tell you a quick story... Recently an old friend sent me this link: http://realendeavors.com/momsworkfromhome Honestly I didn't take it seriously because I found reviews saying it's a scam, but she stayed in touch and kept showing me her weekly payments. I asked her to be totally honest with me about it since I didn't have money to spare, and what I realized is there are lots of people out there that make fake reviews, so they can tell you something is a scam then try to get you to do something else that makes them money. You can always spot a fake review by whether they try to promote something else."
+                            message_data = "Hi "+sender_fname+", let me tell you a quick story... Recently an old friend sent me this link: http://realendeavors.com/momsworkfromhome Honestly I didn't take it seriously because I found reviews saying it's a scam, but she stayed in touch and kept showing me her weekly payments.\n\nI asked her to be totally honest with me about it since I didn't have money to spare, and what I realized is there are lots of people out there that make fake reviews, so they can tell you something is a scam then try to get you to do something else that makes them money. You can always spot a fake review by whether they try to promote something else."
                             send_comment_message(comment_id, message_data)
             except:
                 pass

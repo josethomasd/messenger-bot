@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, about $1000 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
+                        message_data = "Hi "+sender_fname_stripped+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, about $3000 a week at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, about $1000 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
+                            message_data = "Hi "+sender_fname+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, about $3000 a week at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

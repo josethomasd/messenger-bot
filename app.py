@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", my friend Megan just sent me a story she was featured in about our work from home job: http://realendeavors.com/momsworkfromhome She's been doing it for around 2 months, and she told me about it when she got started, but I thought it sounded too good to be true. I finally started a few weeks ago and now we're both making twice as much as we were at our old call center jobs. I really needed this, since I was about to get evicted, and now I'm totally out of debt."
+                        message_data = "Hi "+sender_fname_stripped+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, about $1000 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", my friend Megan just sent me a story she was featured in about our work from home job: http://realendeavors.com/momsworkfromhome She's been doing it for around 2 months, and she told me about it when she got started, but I thought it sounded too good to be true. I finally started a few weeks ago and now we're both making twice as much as we were at our old call center jobs. I really needed this, since I was about to get evicted, and now I'm totally out of debt."
+                            message_data = "Hi "+sender_fname+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, about $1000 a day at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

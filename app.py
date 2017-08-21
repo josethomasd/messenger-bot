@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", my friend Megan just sent me a story she was featured in about our work from home job: http://realendeavors.com/momsworkfromhome She's been doing it for around 2 months, and she told me about when she got started, but I thought it sounded too good to be true. I finally started a few weeks ago and now we're both making twice as much as we were at our old call center jobs. I really needed this, since I was about to get evicted, and now I'm totally out of debt."
+                        message_data = "Hi "+sender_fname_stripped+", my friend Megan just sent me a story she was featured in about our work from home job: http://realendeavors.com/momsworkfromhome She's been doing it for around 2 months, and she told me about it when she got started, but I thought it sounded too good to be true. I finally started a few weeks ago and now we're both making twice as much as we were at our old call center jobs. I really needed this, since I was about to get evicted, and now I'm totally out of debt."
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", my friend Megan just sent me a story she was featured in about our work from home job: http://realendeavors.com/momsworkfromhome She's been doing it for around 2 months, and she told me about when she got started, but I thought it sounded too good to be true. I finally started a few weeks ago and now we're both making twice as much as we were at our old call center jobs. I really needed this, since I was about to get evicted, and now I'm totally out of debt."
+                            message_data = "Hi "+sender_fname+", my friend Megan just sent me a story she was featured in about our work from home job: http://realendeavors.com/momsworkfromhome She's been doing it for around 2 months, and she told me about it when she got started, but I thought it sounded too good to be true. I finally started a few weeks ago and now we're both making twice as much as we were at our old call center jobs. I really needed this, since I was about to get evicted, and now I'm totally out of debt."
                             send_comment_message(comment_id, message_data)
             except:
                 pass

@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, $2400 a week at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a survey company that pays up to $50 per survey, and she let me in on a little trick to making $200-300 a day with it. The key is to do at least 3 or 4 surveys immediately after signing up to prove you're serious, and then you'll start getting their $50 surveys. I've tried a bunch of other survey sites and only made pennies, but this one has changed everything for me and my kids. I feel truly blessed since getting started at http://realendeavors.com/paid-survey since I can now stay at home with my little ones"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", just saw your comment.. Less than a year ago I was living in my car, but my life has changed since working with a millionaire mentor who shows me what to do to make money online, $2400 a week at the moment. I feel truly blessed since getting started at http://realendeavors.com/momsworkfromhome since I can now stay at home with my little ones"
+                            message_data = "Hi "+sender_fname+", just saw your comment.. I have a friend who works at a survey company that pays up to $50 per survey, and she let me in on a little trick to making $200-300 a day with it. The key is to do at least 3 or 4 surveys immediately after signing up to prove you're serious, and then you'll start getting their $50 surveys. I've tried a bunch of other survey sites and only made pennies, but this one has changed everything for me and my kids. I feel truly blessed since getting started at http://realendeavors.com/paid-survey since I can now stay at home with my little ones"
                             send_comment_message(comment_id, message_data)
             except:
                 pass

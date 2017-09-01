@@ -264,7 +264,7 @@ def webhook():
                         send_state(sender_id)
                         time.sleep(15)
 
-                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a survey company that pays up to $50 per survey, and she let me in on a little secret to making $200-300 a day with it.\n\nThe key is to do AT LEAST 3 surveys right after signing up to show you're serious, and then you'll start getting their $50 surveys. I've paid for other survey sites and only made chump change, but this one is free and has changed everything for me and my kids.\n\nI feel truly blessed since getting started at http://realendeavors.com/paid-surveys since I can now stay at home with my little ones"
+                        message_data = "Hi "+sender_fname_stripped+", thanks for reaching out.. I have a friend who works at a survey company that pays up to $50 per survey, and she let me in on a little secret to making $200-300 a day with it.\n\nThe key is to do AT LEAST 3 surveys right after signing up to show you're serious, and then you'll start getting their $50 surveys. I've paid for other survey sites and only made chump change, but this one is free and has changed everything for me and my kids.\n\nI feel truly blessed since getting started at http://realendeavors.com/paidsurveys since I can now stay at home with my little ones"
                         send_message(sender_id, message_data)
 
                     else:
@@ -314,7 +314,7 @@ def webhook():
                             
                             #time.sleep(10)
 
-                            message_data = "Hi "+sender_fname+", just saw your comment.. I have a friend who works at a survey company that pays up to $50 per survey, and she let me in on a little secret to making $200-300 a day with it.\n\nThe key is to do AT LEAST 3 surveys right after signing up to show you're serious, and then you'll start getting their $50 surveys. I've paid for other survey sites and only made chump change, but this one is free and has changed everything for me and my kids.\n\nI feel truly blessed since getting started at http://realendeavors.com/paid-surveys since I can now stay at home with my little ones"
+                            message_data = "Hi "+sender_fname+", just saw your comment.. I have a friend who works at a survey company that pays up to $50 per survey, and she let me in on a little secret to making $200-300 a day with it.\n\nThe key is to do AT LEAST 3 surveys right after signing up to show you're serious, and then you'll start getting their $50 surveys. I've paid for other survey sites and only made chump change, but this one is free and has changed everything for me and my kids.\n\nI feel truly blessed since getting started at http://realendeavors.com/paidsurveys since I can now stay at home with my little ones"
                             send_comment_message(comment_id, message_data)
             except:
                 pass
